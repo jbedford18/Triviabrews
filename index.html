@@ -18,25 +18,6 @@
 </header>
 
 <body>
-<<<<<<< HEAD
-    <section id="start-page" class="activeInfo ">
-        
-        <div class="grid-x">
-        <div class="card grid-x" id="Instruction-container">
-            <div class="card-divider cell small-6">
-                Instructions
-            </div>
-            <div class="card-section cell-small-6 ">
-                <ul class="instructions">
-                    <li>Step 1: </li>
-                    <li>Step 2: </li>
-                    <li>Step 3: </li>
-                </ul>
-                <div id="categories"></div>
-            </div>
-        </div>
-        
-=======
     <section id="start-page" class="activeInfo">
 
         <div class="grid-x">
@@ -54,15 +35,7 @@
                     <div id="categories"></div>
                 </div>
             </div>
-
-
-
->>>>>>> 40d8aa841b8b61583d694e612e8eaf1047d24c66
-
-
-
-
-
+            
             <div class="card grid-x ">
                 <div class="card-divider align-center cell small-6">
                     <h3>Gameplay!</h3>
@@ -70,37 +43,36 @@
                 <div class="card-section cell small-6">
                     <p>Choose a category in order to play!</p>
                 </div>
-
-                
+ 
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li class="is-dropdown-submenu-parent">
                       <a href="#"> Category Options </a>
-                      <ul class="menu">
-                        <li><a href="#option">...</a></li>
-                        <li><a href="#option">...</a></li>
-                        <li><a href="#option">...</a></li>
-                        <li><a href="option#">...</a></li>
-                        <li><a href="#option">...</a></li>
-                        
-                        <!-- ... -->
+                      <ul class="menu" id = "categories">
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
                       </ul>
-                    </li>
-    
-                    
+                    </li> 
                   </ul>
+                  <div class="cell small-4">
+                    <button class="button alert" id="start-btn"> Start Game </button>
+                    </div>
             </div>
         </div>
 
-
-
         <div class="grid-x grid-padding-x align-right">
             <div class="cell small-4">
-            <button  class="button alert" id="start-btn"> View Highscores </button>
+            <button class="button alert" id="highscores-btn"> View Highscores </button>
             </div>      
         </div>
-      
-            
-
+      <!--Caroline's edits for trivia question start-->
+      <div id = "trivia-page" class ="hidden">
+        <div id="question-container">
+        </div>
+      </div>
+      <!--Caroline edits for trivia page end-->
     </section>
     <script src="https://kit.fontawesome.com/bd874f56b1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -112,5 +84,4 @@
 <footer>
     Made By:
 </footer>
-
 </html>
