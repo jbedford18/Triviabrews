@@ -5,3 +5,11 @@
 .hidden{
     display: none;
 }
+
+body {
+    background-color: skyblue;
+}
+
+header h1{
+    color: red;
+}
