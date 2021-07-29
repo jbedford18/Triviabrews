@@ -12,50 +12,57 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <header>
-    <h1 class="grid-x">Trivia Game</h1>
+    <div class="grid-x grid-padding-x align-center">
+    <h1>Trivia Game</h1>
+    </div>
 </header>
 
 <body>
     <section id="start-page" class="activeInfo">
-        
+
         <div class="grid-x">
-        <div class="card grid-x" id="Instruction-container">
-            <div class="card-divider cell small-6">
-                Instructions
+            <div class="card grid-x" id="Instruction-container">
+                <div class="card-divider cell small-6">
+                    Instructions
+                </div>
+                <div class="card-section cell-small-6 ">
+                    <ul class="instructions no-bullet">
+                        <li>Rule 1: </li>
+                        <li>Rule 2: </li>
+                        <li>Rule 3: </li>
+                        <li>Rule 4: </li>
+                    </ul>
+                    <div id="categories"></div>
+                </div>
             </div>
-            <div class="card-section cell-small-6 ">
-                <ul class="instructions">
-                    <li>Step 1: </li>
-                    <li>Step 2: </li>
-                    <li>Step 3: </li>
-                </ul>
-                <div id="categories"></div>
+
+
+
+
+
+
+
+
+            <div class="card grid-x">
+                <div class="card-divider cell small-6">
+                    GamePlay
+                </div>
+                <div class="card-section cell small-6">
+                    <button class="button large alert" id="start-btn">Play Now</button>
+                </div>
             </div>
         </div>
-        
-
-        
-        
 
 
 
+        <div class="grid-x grid-padding-x align-right">
+            <div class="cell small-4">
+            <button  class="button alert" id="start-btn"> View Highscores </button>
+            </div>      
+        </div>
+      
+            
 
-        <div class="card grid-x">
-            <div class="card-divider cell small-6">
-                GamePlay
-                </div>
-                    <div class="card-section cell small-6">
-                        <button id="start-btn">Play Now</button>
-                    </div>
-                </div>
-            </div>
-        
-        
-
-
-            <div>
-                <button id="start-btn"> View Highscores </button>
-            </div>
     </section>
     <script src="https://kit.fontawesome.com/bd874f56b1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
