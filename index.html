@@ -1,54 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 1!</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <header>
-<h1>Trivia Game</h1>
+    <h1 class="grid-x">Trivia Game</h1>
 </header>
 
 <body>
-<section id = "start-page" class = "activeInfo">
-<div id = "Instruction-container">
-Instructions
-<div>
-<ul class = "instructions">
-    <li>Step 1: </li>
-    <li>Step 2: </li>
-    <li>Step 3: </li>
-</ul>
-</div>
-<div id = "categories">
+    <section id="start-page" class="activeInfo ">
+        
+        <div class="grid-x">
+        <div class="card grid-x" id="Instruction-container">
+            <div class="card-divider cell small-6">
+                Instructions
+            </div>
+            <div class="card-section cell-small-6 ">
+                <ul class="instructions">
+                    <li>Step 1: </li>
+                    <li>Step 2: </li>
+                    <li>Step 3: </li>
+                </ul>
+                <div id="categories"></div>
+            </div>
+        </div>
+        
 
-</div>
-</div>
-
-<div>
-GamePlay
-<div>
-<button>Play Now</button>
-</div>
-
-</div>
+        
+        
 
 
-<div>
-    <button id = "start-btn"> View Highscores </button>
-</div>
-</section>
-<script src="https://kit.fontawesome.com/bd874f56b1.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="./assets/js/script.js"></script>
+
+
+        <div class="card grid-x">
+            <div class="card-divider cell small-6">
+                GamePlay
+                </div>
+                    <div class="card-section cell small-6">
+                        <button>Play Now</button>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+            <div>
+                <button id="start-btn"> View Highscores </button>
+            </div>
+    </section>
+    <script src="https://kit.fontawesome.com/bd874f56b1.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 
 </body>
 
 <footer>
     Made By:
 </footer>
+
 </html>
