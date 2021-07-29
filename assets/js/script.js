@@ -40,3 +40,5 @@ function hideStart(){
 startButton.addEventListener("click", hideStart);
 
 
+var elem = new Foundation.DropdownMenu(element, options);
+
