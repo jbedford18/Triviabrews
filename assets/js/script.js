@@ -8,7 +8,6 @@ function fetchQuestion(){
             response.json().then(function(data){
                 console.log(data);
                 console.log(data.results[0]);
-                //
                 console.log(data.results[0].category);
                 var category = data.results[0].category;
                 displayCategories(category);
@@ -23,18 +22,21 @@ fetchQuestion();
 //function to display categories on main page
 function displayCategories(category){
     var categoryEl = document.getElementById("categories");    
+    document.createElement("btn").setAttribute("id = cat-btn");
+    document
     categoryEl.textContent = category;
 };
 
-// function hideStart(){
-//     startPage.classList.add("hidden");
-//     console.log("hidden");
-// };
-startButton.onclick = () =>{
-    startButton.classList.add(hidden);
-    console.log("hidden");
-}
+//function to hide start page when user clicks start button
+function hideStart(){
+    var startPage = document.getElementById("start-page");
+    startPage.classList.remove("active");
+    startPage.classList.add("hidden");
+    //console.log("hidden");
+};
+
+
 ///////////////////////////event listeners///////////////////////////
-//startButton.addEventListener("click", hideStart);
+startButton.addEventListener("click", hideStart);
 
 
