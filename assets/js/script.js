@@ -1,8 +1,11 @@
 $( document ).ready(function() {
 });
+//^not sure if i need this tbh
+//GLOBAL VARIABLES START
 var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
-//add dropdownmenu funcrionality after quiz page is done
+//GLOBAL VARIABLES END
+//REFACTOR HERE: when MVP is 100% to add dropdown functionality we must include some foundation files in the js, 
 //var dropDown = new Foundation.DropdownMenu(element, options);
 //initialize time at 60 seconds
 //var time = 60; 
@@ -24,8 +27,8 @@ function fetchQuestion(){
         }
     });
 };
-//fetchQuestion();
-//function to display categories on main page
+
+//REFACTOR HERE: when MVP is 100% add this function to display categories on main page
 function displayCategories(category){
     var categoryEl = document.getElementById("categories");    
     //document.createElement("btn").setAttribute("id = cat-btn");
@@ -41,17 +44,17 @@ function hideStart(){
     //console.log("hidden");
 };
 
-//function to display quiz
+//function to display trivia question page...similar to how the highscore page funciton will work
 function displayTriviaQuestions(data){
+    //calling hideStart funciton
     hideStart();
     var triviaPage = document.getElementById("trivia-page");
     //removeing hidden class and making page active
     triviaPage.classList.remove("hidden");
     triviaPage.classList.add("activeInfo");
     var questionContainer = $("#question-container");
-    //clear off previous question
-    questionContainer.innerHTML = "";
-    //choicesEl.append('<h2>Answer the trivia question correctly to earn a point: </h2>');
+    //REFACTOR HERE: clear off previous question
+    //questionContainer.innerHTML = "";
     //REFACTOR HERE: IDEALLY, ID LIKE THIS TO BE A LOOP BC CHOICES CAN RANGE FROM 2-3 OPTIONS
     //console.log(data.results[0].incorrect_answers.length);
     //for(var i = 0; i < choicesArr.length; i++){
@@ -62,8 +65,8 @@ function displayTriviaQuestions(data){
         //choiceEl.textContent = choice;
         //console.log(choice);
    // };    
+   //iterate thru all 10 questions and their possible choices
    for(var i = 0; i < data.results.length; i++){
-    //REFACTOR HERE STILL PRINTING NONSTRING VAL OF SPECIAL CHARS NESTED IN ""
     var dataChoice1 = data.results[i].incorrect_answers[0];
     var dataChoice2 = data.results[i].incorrect_answers[1];
     var dataChoice3 = data.results[i].incorrect_answers[2];
@@ -72,21 +75,23 @@ function displayTriviaQuestions(data){
 
     questionContainer.append('<h2 id = "question">'+question+'</h2>');
     //stringify needed to get the special chars in the html
-
-    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice1">'+dataChoice1+'</label></input>');
-    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
-    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
+    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+dataChoice1+'</label></input>');
+    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
+    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
     questionContainer.append('<input name = "answer" type = "radio"><label id = "choice3">'+dataCorrectChoice+'</label></input>');
+    }
+
     //Button to for event listner to check answers at the end of 10 questions
-    var submitBtnEl = '<button class="btn btn-primary" id="submit-button" type="submit">Done</button>';
+    var submitBtnEl = '<button class="success button" id="submit-button" type="submit">Submit Now!</button>';
     questionContainer.append(submitBtnEl);
     $("#submit-button").on("click", checkAnswers);
-}
+    //submitBtnEl.addEventListener("click", checkAnswers);
 };
 
 //function to check answers
 function checkAnswers(event){
+    event.preventDefault;
     console.log(event.target);
 };
 //function to determine timer state
