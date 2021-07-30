@@ -56,12 +56,21 @@ function displayTriviaQuestions(data){
     triviaPage.classList.remove("hidden");
     triviaPage.classList.add("activeInfo");
     //console.log(triviaPage);
-    // for(var i = 0; i < data.response; i++){
-    //    console.log(data.results[i].question);
-    //};    
+    var choicesArr = data.results[0].incorrect_answers;
+    //REFACTOR HERE: IDEALLY, ID LIKE THIS TO BE A LOOP BC CHOICES CAN RANGE FROM 2-3 OPTIONS
+    //console.log(data.results[0].incorrect_answers.length);
+    //for(var i = 0; i < choicesArr.length; i++){
+        //console.log(data.results[i].question);
+        //console.log(choicesArr[i]);
+        //var choiceEl = document.getElementById("choice" + i);
+        // var choice = data.results[0].incorrect_answers[i];
+        //choiceEl.textContent = choice;
+        //console.log(choice);
+   // };    
     var question = data.results[0].question;
-    questionEl.textContent = question;
-    console.log(question);
+    //stringify needed to get the special chars in the html
+    questionEl.textContent = JSON.stringify(question);
+    //console.log(question);
     //foundation for creating checkbox els
     var choice1 = document.getElementById("choice1");
     choice1.textContent =  data.results[0].incorrect_answers[0];
@@ -69,9 +78,12 @@ function displayTriviaQuestions(data){
     choice2.textContent = data.results[0].incorrect_answers[1];
     var choice3 = document.getElementById("choice3");
     choice3.textContent = data.results[0].incorrect_answers[2];
-    //var choices = document.getElementById("choices");
+    //FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
+    var correctChoice = document.getElementById("choice4");
+    correctChoice.textContent = data.results[0].correct_answer;
 };
-// //function to determine timer state
+
+//function to determine timer state
 // function timer(){
 //     timer.textContent
 // };
