@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+});
 var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
 //add dropdownmenu funcrionality after quiz page is done
@@ -13,7 +15,7 @@ function fetchQuestion(){
                 console.log(data);
                 //console.log(data.results[0]);
                 //console.log(data.results[0].question);
-                var category = data.results[0].category;
+                //var category = data.results[0].category;
                 displayTriviaQuestions(data);
             });
         }
@@ -39,28 +41,35 @@ function hideStart(){
     startPage.classList.add("hidden");
     //console.log("hidden");
 };
+
 //function to display quiz
 function displayTriviaQuestions(data){
     hideStart();
     //console.log("hi!");
-    //using a little jquery for practice
-    var questionContainer = $("#question-container");
-    var triviaPage = $("#trivia-page");
+    //migh need to use jquery to get actual value of data text
+    var questionEl = document.getElementById("question");
+    //var questionContainer = $("#question-container");
+    //var triviaPage = $("#trivia-page");
+    //var questionContainer = document.getElementById("question-container");
+    var triviaPage = document.getElementById("trivia-page");
     //removeing hidden class and making page active
-    // triviaPage.classList.remove("hidden");
-    //triviaPage.classList.add("activeInfo");
+    triviaPage.classList.remove("hidden");
+    triviaPage.classList.add("activeInfo");
+    //console.log(triviaPage);
     // for(var i = 0; i < data.response; i++){
     //    console.log(data.results[i].question);
-    //};
-
-    questionContainer.append('<div id="question">' + data.results[0].question + '</div>');
+    //};    
+    var question = data.results[0].question;
+    questionEl.textContent = question;
+    console.log(question);
     //foundation for creating checkbox els
-    var choice1 = data.results[0].incorrect_answers[0];
-    var choice2 = data.results[0].incorrect_answers[1];
-    var choice3 = data.results[0].incorrect_answers[2];
-    questionContainer.append('<input type="radio" id="choice1"><label for="choice1">'+ choice1+ '</label>');
-    questionContainer.append('<input type="radio" id="choice2" required><label for="choice2">'+choice2+'</label>');
-    questionContainer.append('<input type="radio" id="choice3"><label for="choice3">'+choice3+'</label>');
+    var choice1 = document.getElementById("choice1");
+    choice1.textContent =  data.results[0].incorrect_answers[0];
+    var choice2 = document.getElementById("choice2");
+    choice2.textContent = data.results[0].incorrect_answers[1];
+    var choice3 = document.getElementById("choice3");
+    choice3.textContent = data.results[0].incorrect_answers[2];
+    //var choices = document.getElementById("choices");
 };
 // //function to determine timer state
 // function timer(){
