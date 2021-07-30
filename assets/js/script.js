@@ -29,7 +29,6 @@ function fetchQuestion(){
 function displayCategories(category){
     var categoryEl = document.getElementById("categories");    
     //document.createElement("btn").setAttribute("id = cat-btn");
-    
     categoryEl.textContent = category;
 };
 
@@ -45,18 +44,14 @@ function hideStart(){
 //function to display quiz
 function displayTriviaQuestions(data){
     hideStart();
-    //console.log("hi!");
-    //migh need to use jquery to get actual value of data text
-    var questionEl = document.getElementById("question");
-    //var questionContainer = $("#question-container");
-    //var triviaPage = $("#trivia-page");
-    //var questionContainer = document.getElementById("question-container");
     var triviaPage = document.getElementById("trivia-page");
     //removeing hidden class and making page active
     triviaPage.classList.remove("hidden");
     triviaPage.classList.add("activeInfo");
-    //console.log(triviaPage);
-    var choicesArr = data.results[0].incorrect_answers;
+    var questionContainer = $("#question-container");
+    //clear off previous question
+    questionContainer.innerHTML = "";
+    //choicesEl.append('<h2>Answer the trivia question correctly to earn a point: </h2>');
     //REFACTOR HERE: IDEALLY, ID LIKE THIS TO BE A LOOP BC CHOICES CAN RANGE FROM 2-3 OPTIONS
     //console.log(data.results[0].incorrect_answers.length);
     //for(var i = 0; i < choicesArr.length; i++){
@@ -67,22 +62,33 @@ function displayTriviaQuestions(data){
         //choiceEl.textContent = choice;
         //console.log(choice);
    // };    
-    var question = data.results[0].question;
+   for(var i = 0; i < data.results.length; i++){
+    //REFACTOR HERE STILL PRINTING NONSTRING VAL OF SPECIAL CHARS NESTED IN ""
+    var dataChoice1 = data.results[i].incorrect_answers[0];
+    var dataChoice2 = data.results[i].incorrect_answers[1];
+    var dataChoice3 = data.results[i].incorrect_answers[2];
+    var dataCorrectChoice = data.results[i].correct_answer;
+    var question = JSON.stringify(data.results[i].question);
+
+    questionContainer.append('<h2 id = "question">'+question+'</h2>');
     //stringify needed to get the special chars in the html
-    questionEl.textContent = JSON.stringify(question);
-    //console.log(question);
-    //foundation for creating checkbox els
-    var choice1 = document.getElementById("choice1");
-    choice1.textContent =  data.results[0].incorrect_answers[0];
-    var choice2 = document.getElementById("choice2");
-    choice2.textContent = data.results[0].incorrect_answers[1];
-    var choice3 = document.getElementById("choice3");
-    choice3.textContent = data.results[0].incorrect_answers[2];
-    //FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
-    var correctChoice = document.getElementById("choice4");
-    correctChoice.textContent = data.results[0].correct_answer;
+
+    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice1">'+dataChoice1+'</label></input>');
+    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
+    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
+    //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
+    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice3">'+dataCorrectChoice+'</label></input>');
+    //Button to for event listner to check answers at the end of 10 questions
+    var submitBtnEl = '<button class="btn btn-primary" id="submit-button" type="submit">Done</button>';
+    questionContainer.append(submitBtnEl);
+    $("#submit-button").on("click", checkAnswers);
+}
 };
 
+//function to check answers
+function checkAnswers(event){
+    console.log(event.target);
+};
 //function to determine timer state
 // function timer(){
 //     timer.textContent
