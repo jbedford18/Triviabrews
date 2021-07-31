@@ -35,14 +35,7 @@
                     <div id="categories"></div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
+            
             <div class="card grid-x ">
                 <div class="card-divider align-center cell small-6" >
                     <h3>Gameplay!</h3>
@@ -50,47 +43,46 @@
                 <div class="card-section cell small-6">
                     <p>Choose a category in order to play!</p>
                 </div>
-
-                
+ 
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li class="is-dropdown-submenu-parent">
                       <a href="#"> Category Options </a>
-                      <ul class="menu">
-                        <li><a href="#option">...</a></li>
-                        <li><a href="#option">...</a></li>
-                        <li><a href="#option">...</a></li>
-                        <li><a href="option#">...</a></li>
-                        <li><a href="#option">...</a></li>
-                        
-                        <!-- ... -->
+                      <ul class="menu" id = "categories">
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
                       </ul>
-                    </li>
-    
-                    
+                    </li> 
                   </ul>
+                  <div class="cell small-4">
+                    <button class="button alert" id="start-btn"> Start Game </button>
+                </div>
             </div>
         </div>
-
-
-
         <div class="grid-x grid-padding-x align-right">
             <div class="cell small-4">
-            <button  class="button alert" id="start-btn"> View Highscores </button>
+            <button class="button alert" id="highscores-btn"> View Highscores </button>
             </div>      
         </div>
-      
-            
-
     </section>
+    <!--Caroline's edits for trivia question page START-->
+    <!--note: make all the edits that are needed so long as the id names stay the same I can figure out the changes easy :)-->
+    <section id = "trivia-page" class ="hidden">
+        <div id="question-container">
+            <!--append question here-->
+        </div>
+        <!--div to display if user answered correctly or incorrectly-->
+        <div id="feedback" class="hidden"></div>
+    </section>
+    <!--Caroline edits for trivia page END-->
+    <footer>
+        <p>Made with swag by (group)</p>
+    </footer>
     <script src="https://kit.fontawesome.com/bd874f56b1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
-
 </body>
-
-<footer>
-    Made By:
-</footer>
-
 </html>
