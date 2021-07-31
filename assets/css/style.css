@@ -68,3 +68,8 @@ footer {
             background: rgb(184, 184, 224)
 }
 
+.column, .columns {
+    border:black 2px solid;
+    background-color: none;
+    margin:10px;
+}
