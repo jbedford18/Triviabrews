@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 1!</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <header>
-Trivia Game
+    <div class="grid-x grid-padding-x align-center">
+    <h1>Trivia Game</h1>
+    </div>
 </header>
 
+<<<<<<< HEAD
 <body>
 <div>
 Instructions
@@ -33,28 +39,78 @@ GamePlay :)
 
 </div>
 
+=======
+<section class="image-bgc">
+>>>>>>> feature/start-page
 
-<div>
-    <button> View Highscores </button>
-</div>
-    
+</section>
 
+<body>
+    <section id="start-page" class="activeInfo">
 
-    
-    
-    
+        <div class="grid-x">
+            <div class="card grid-x column" id="Instruction-container">
+                <div id="bgc-1" class="card-divider align-self-middle cell medium-4">
+                    <h3>Instructions</h3>
+                </div>
+                <div class="card-section cell-small-6 ">
+                    <ul class="instructions no-bullet">
+                        <li>Rule 1: </li>
+                        <li>Rule 2: </li>
+                        <li>Rule 3: </li>
+                        <li>Rule 4: </li>
+                    </ul>
+                    <div id="categories"></div>
+                </div>
+            </div>
+            
+            <div class="card grid-x column" id="bgc">
+                <div id="bgc-2" class="card-divider align-self-middle cell medium-3" >
+                    <h3>Gameplay!</h3>
+                </div>
+                <div class="card-section cell small-6">
+                    <p>Choose a category in order to play!</p>
+                </div>
+ 
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li class="is-dropdown-submenu-parent">
+                      <a href="#"> Category Options </a>
+                      <ul class="menu" id = "categories">
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                        <li><a href="#option"></a></li>
+                      </ul>
+                    </li> 
+                  </ul>
+                  <div class="cell small-4">
+                    <button class="button alert" id="start-btn"> Start Game </button>
+                </div>
+            </div>
+        </div>
+        <div class="grid-x grid-padding-x align-right">
+            <div class="cell small-4">
+            <button class="button alert" id="highscores-btn"> View Highscores </button>
+            </div>      
+        </div>
+    </section>
+    <!--Caroline's edits for trivia question page START-->
+    <!--note: make all the edits that are needed so long as the id names stay the same I can figure out the changes easy :)-->
+    <section id = "trivia-page" class ="hidden">
+        <div id="question-container">
+            <!--append question here-->
+        </div>
+        <!--div to display if user answered correctly or incorrectly-->
+        <div id="feedback" class="hidden"></div>
+    </section>
+    <!--Caroline edits for trivia page END-->
+    <footer class="grid-x grid-padding-x align-right">
+        <p>Made with swag by (group)</p>
+    </footer>
     <script src="https://kit.fontawesome.com/bd874f56b1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
-
 </body>
-
-<footer>
-    Made By:
-</footer>
-
-
-
-   
 </html>
