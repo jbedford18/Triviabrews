@@ -85,11 +85,36 @@ footer {
     background-color: red;
     display: flex;
     float: right;
-   
-    
-    
-
-
-
-   
 }
+
+#question-container {
+    text-shadow: 0 0 10px rgba(99, 40, 40, 0.5);
+    color: orange;
+    }
+
+    #time {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 170px;
+        height: 60px;
+        background: rgb(202, 134, 57);
+        border: 1px dotted rgb(139, 57, 160);
+        border-radius: 6px;
+        padding: 10px 8px;
+    }
+
+    #seconds {
+        padding: 10px;
+        font-size: 21px;
+        height: 55px;
+        background-color: rgb(184, 184, 224);
+
+    }
+   
+    
+    
+
+
+
+   
