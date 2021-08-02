@@ -104,6 +104,10 @@ startButton.addEventListener("click", fetchQuestion);
 //startButton.addEventListener("click", hideStart);
 
 
-
-
+// timer 
+// function timer (){
+// timerquestions --;
+// timer8id = setInterval(timer, 1000)
+// timercount.textContent = timerquestions;
+// }
 
