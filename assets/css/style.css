@@ -81,11 +81,15 @@ footer {
 #submit-button {
     
     align-content: center;
-    color: red;
-    background-color: green;
-    /* display: flex; */
+    color: white;
+    background-color: red;
+    display: flex;
+    float: right;
+   
+    
+    
 
-    justify-content: space-around;
-    /* padding: auto; */
+
+
    
 }

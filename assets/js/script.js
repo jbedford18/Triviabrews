@@ -5,6 +5,7 @@ $( document ).ready(function() {
 var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
 var triviaPage = document.getElementById("trivia-page");
+
 //GLOBAL VARIABLES END
 //REFACTOR HERE: when MVP is 100% to add dropdown functionality we must include some foundation files in the js, 
 //var dropDown = new Foundation.DropdownMenu(element, options);
@@ -87,6 +88,7 @@ function displayTriviaQuestions(data){
     var submitBtnEl = '<button class="success button" id="submit-button" type="submit">Submit Now!</button>';
     questionContainer.append(submitBtnEl);
     $("#submit-button").on("click", checkAnswers);
+    
     //submitBtnEl.addEventListener("click", checkAnswers);
 };
 
@@ -119,3 +121,12 @@ function hide(element) {
 function display(element) {
     element.style.display = "block";
 };
+
+//
+
+
+// conner working on logic you can place where you like 
+// var highScoresBtn = document.getElementById("highscores-btn")
+// highScores.addEventListener("click", highScores)
+// function highScores ()
+
