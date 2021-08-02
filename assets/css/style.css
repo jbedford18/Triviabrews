@@ -73,3 +73,15 @@ footer {
     background-color: none;
     margin:10px;
 }
+
+#submit-button {
+    
+    align-content: center;
+    color: red;
+    background-color: green;
+    /* display: flex; */
+
+    justify-content: space-around;
+    /* padding: auto; */
+   
+}
