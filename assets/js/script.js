@@ -1,10 +1,23 @@
 $( document ).ready(function() {
 });
+
 //^not sure if i need this tbh
 //GLOBAL VARIABLES START
 var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
 var triviaPage = document.getElementById("trivia-page");
+var submitBtnEl = document.getElementById("submit-button");
+
+///////////vars for trying to do one question perpage
+////////////////////////////////////////////////////////////////////////////////////
+var choices = [];
+var questions = [];
+var correctChoices = [];
+var questionEl = document.getElementById("question");
+var choiceA = document.getElementById("btnA");
+var choiceB = document.getElementById("btnB");
+var choiceC = document.getElementById("btnC");
+var choiceD = document.getElementById("btnD");
 
 //GLOBAL VARIABLES END
 //REFACTOR HERE: when MVP is 100% to add dropdown functionality we must include some foundation files in the js, 
@@ -17,11 +30,8 @@ function fetchQuestion(){
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
+                loadTriviaQuestions(data);
                 console.log(data);
-                //console.log(data.results[0]);
-                //console.log(data.results[0].question);
-                //var category = data.results[0].category;
-                displayTriviaQuestions(data);
             });
         }
         else{
@@ -37,24 +47,13 @@ function displayCategories(category){
     categoryEl.textContent = category;
 };
 
-//function to hide start page when user clicks start button
-function hideStart(){
-    var startPage = document.getElementById("start-page");
-    //getting ride of start page display using css classes
-    startPage.classList.remove("activeInfo");
-    startPage.classList.add("hidden");
-    //console.log("hidden");
-};
-
 //function to display trivia question page...similar to how the highscore page funciton will work
-function displayTriviaQuestions(data){
-    //calling hideStart funciton
-    hideStart();
+function loadTriviaQuestions(data){
     var triviaPage = document.getElementById("trivia-page");
     //removeing hidden class and making page active
     triviaPage.classList.remove("hidden");
     triviaPage.classList.add("activeInfo");
-    var questionContainer = $("#question-container");
+   
     //REFACTOR HERE: clear off previous question
     //questionContainer.innerHTML = "";
     //REFACTOR HERE: IDEALLY, ID LIKE THIS TO BE A LOOP BC CHOICES CAN RANGE FROM 2-3 OPTIONS
@@ -69,34 +68,83 @@ function displayTriviaQuestions(data){
    // };    
    //iterate thru all 10 questions and their possible choices
    for(var i = 0; i < data.results.length; i++){
+    correctChoices[i] = data.results[i].correct_answer;
+    questions[i] = data.results[i].question;
+    //new arr[] logic tesing:
+    for(var j = 0; j < 3; j++){
+        choices[i] = data.results[i].incorrect_answers[j];
+    }
+    //////////////alternate logic for displaying questions on pgae
     var dataChoice1 = data.results[i].incorrect_answers[0];
     var dataChoice2 = data.results[i].incorrect_answers[1];
     var dataChoice3 = data.results[i].incorrect_answers[2];
     var dataCorrectChoice = data.results[i].correct_answer;
     var question = JSON.stringify(data.results[i].question);
 
+    var questionContainer = $("#question-container");
+   
     questionContainer.append('<h2 id = "question">'+question+'</h2>');
     //stringify needed to get the special chars in the html
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+dataChoice1+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
-    questionContainer.append('<input name = "answer" type = "radio"><label id = "choice3">'+dataCorrectChoice+'</label></input>');
-    }
+    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataCorrectChoice+'</label></input>');
 
+    //$("#submit-button").on("click", checkAnswers);
+}
+    questionContainer.append('<button class="success button" id="submit-button" type="submit">Submit Now!</button>');    
+    //console.log("questions: "+questions);
+    //console.log("correct ansers: "+correctChoices);
+    //console.log("incorrect anseers:" + choices);
+
+    //var possibleAnswers = correctChoices.concat(choices);
+    //array of both correct and incorrect answers
+    //console.log(possibleAnswers);
+    //This function and the above arrs are temporarily out of order
+    //displayTriviaQuestions(questions, correctChoices, choices);
     //Button to for event listner to check answers at the end of 10 questions
-    var submitBtnEl = '<button class="success button" id="submit-button" type="submit">Submit Now!</button>';
+    //var submitBtnEl = '<button class="success button" id="submit-button" type="submit">Submit Now!</button>';
     questionContainer.append(submitBtnEl);
+    //submitBtnEl.addEventListener("click", function(){
+     //   checkAnswers(data);
+    //});
+    //$("#submit-button").on("click", checkAnswers(data));
     $("#submit-button").on("click", checkAnswers);
     
     //submitBtnEl.addEventListener("click", checkAnswers);
 };
 
 //function to check answers
-function checkAnswers(event){
+function checkAnswers(event, data){
     event.preventDefault;
-    console.log(event.target);
+    //console.log(event.target);
+    var correctAns;
+    var inputAns = [];
+    var corrects = 0;
+    var incorrects = 0;
+    var blanks = 0;
+    inputAns1= $('input[id=radio1]:checked +label');
+    console.log(inputAns1);
+    //hardcoding 10 in here bc still havent figured out how to load api data into arrays
+    for(var i = 0; i < 10; i++){
+        inputAns[i] = $('input[id=radio'+i+']:checked +label');
+        //console.log(correctChoices[i]);
+       if(inputAns === correctChoices[i]){
+          //console.log("correct");
+          console.log(correctChoices[i]);
+          console.log(inputAns);
+        }
+        else if(inputAns === ""){
+          alert("you must answer all questions");
+        }
+        else if(inputAns !== correctChoices[i]){
+          //console.log("wrong!");
+        }
+    }
+    console.log(inputAns);
 };
+
 //function to determine timer state
 // function timer(){
 //     timer.textContent
