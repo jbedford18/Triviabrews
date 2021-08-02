@@ -66,13 +66,15 @@ function loadTriviaQuestions(data){
         //choiceEl.textContent = choice;
         //console.log(choice);
    // };    
+
+   //use push methods to load trhese arrs
    //iterate thru all 10 questions and their possible choices
    for(var i = 0; i < data.results.length; i++){
-    correctChoices[i] = data.results[i].correct_answer;
-    questions[i] = data.results[i].question;
+    correctChoices.push(data.results[i].correct_answer);
+    questions.push(data.results[i].correct_answer);
     //new arr[] logic tesing:
     for(var j = 0; j < 3; j++){
-        choices[i] = data.results[i].incorrect_answers[j];
+        choices.push(data.results[i].incorrect_answers[j]);
     }
     //////////////alternate logic for displaying questions on pgae
     var dataChoice1 = data.results[i].incorrect_answers[0];
@@ -83,9 +85,9 @@ function loadTriviaQuestions(data){
 
     var questionContainer = $("#question-container");
    
-    questionContainer.append('<h2 id = "question">'+question+'</h2>');
+    questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
     //stringify needed to get the special chars in the html
-    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+dataChoice1+'</label></input>');
+    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ dataChoice1+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
@@ -117,32 +119,32 @@ function loadTriviaQuestions(data){
 
 //function to check answers
 function checkAnswers(event, data){
-    event.preventDefault;
+    event.preventDefault();
     //console.log(event.target);
     var correctAns;
     var inputAns = [];
     var corrects = 0;
     var incorrects = 0;
     var blanks = 0;
-    inputAns1= $('input[id=radio1]:checked +label');
-    console.log(inputAns1);
+    inputAns= $('input[type=radio]:checked +label').text();
+    console.log(inputAns);
     //hardcoding 10 in here bc still havent figured out how to load api data into arrays
     for(var i = 0; i < 10; i++){
-        inputAns[i] = $('input[id=radio'+i+']:checked +label');
+        //inputAns = $('input[type=radio'+i+']:checked +label').text();
         //console.log(correctChoices[i]);
-       if(inputAns === correctChoices[i]){
-          //console.log("correct");
+       if(inputAns[i] === correctChoices[i]){
+          console.log("correct");
           console.log(correctChoices[i]);
           console.log(inputAns);
         }
-        else if(inputAns === ""){
-          alert("you must answer all questions");
-        }
+        //else if(inputAns === ""){
+        // alert("you must answer all questions");
+        // }
         else if(inputAns !== correctChoices[i]){
-          //console.log("wrong!");
+          console.log("wrong!");
         }
     }
-    console.log(inputAns);
+    //console.log(inputAns);
 };
 
 //function to determine timer state
@@ -169,9 +171,6 @@ function hide(element) {
 function display(element) {
     element.style.display = "block";
 };
-
-//
-
 
 // conner working on logic you can place where you like 
 // var highScoresBtn = document.getElementById("highscores-btn")
