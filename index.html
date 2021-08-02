@@ -17,36 +17,12 @@
     </div>
 </header>
 
-<<<<<<< HEAD
-<body>
-<div>
-Instructions
-<div>
-1.
-2.
-3.
-4.
-5.
-</div>
-
-</div>
-
-<div>
-GamePlay :)
-<div>
-<button>Play Now</button>
-</div>
-
-</div>
-
-=======
 <section class="image-bgc">
->>>>>>> feature/start-page
 
 </section>
 
 <body>
-    <section id="start-page" class="activeInfo">
+    <section id="start-page" style = "display: block;">
 
         <div class="grid-x">
             <div class="card grid-x column" id="Instruction-container">
@@ -97,12 +73,20 @@ GamePlay :)
     </section>
     <!--Caroline's edits for trivia question page START-->
     <!--note: make all the edits that are needed so long as the id names stay the same I can figure out the changes easy :)-->
-    <section id = "trivia-page" class ="hidden">
+    <section id = "trivia-page" style ="display: none;">
         <div id="question-container">
             <!--append question here-->
+            <h2 id ="question"></h2>
         </div>
-        <!--div to display if user answered correctly or incorrectly-->
-        <div id="feedback" class="hidden"></div>
+        <div id = "choices-container">
+            <p><button id="btnA" class="btn"></button></p>
+            <p><button id="btnB" class="btn"></button></p>
+            <p><button id="btnC" class="btn"></button></p>
+            <p><button id="btnD" class="btn"></button></p>
+            <!--horizontal break-->
+            <hr id="lineBreak"  class="mt-4">
+            <p id="answerCheck"></p>
+        </div>
     </section>
     <!--Caroline edits for trivia page END-->
     <footer class="grid-x grid-padding-x align-right">
