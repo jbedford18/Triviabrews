@@ -4,6 +4,7 @@ $( document ).ready(function() {
 //GLOBAL VARIABLES START
 var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
+var triviaPage = document.getElementById("trivia-page");
 //GLOBAL VARIABLES END
 //REFACTOR HERE: when MVP is 100% to add dropdown functionality we must include some foundation files in the js, 
 //var dropDown = new Foundation.DropdownMenu(element, options);
@@ -99,15 +100,22 @@ function checkAnswers(event){
 //     timer.textContent
 // };
 
+function startGame(){
+    fetchQuestion();
+    hide(startPage);
+    display(triviaPage);
+};
+
 ///////////////////////////event listeners///////////////////////////
-startButton.addEventListener("click", fetchQuestion);
+startButton.addEventListener("click", startGame);
 //startButton.addEventListener("click", hideStart);
 
+//hides element
+function hide(element) {
+    element.style.display = "none";
+};
 
-// timer 
-// function timer (){
-// timerquestions --;
-// timer8id = setInterval(timer, 1000)
-// timercount.textContent = timerquestions;
-// }
-
+//displays element
+function display(element) {
+    element.style.display = "block";
+};

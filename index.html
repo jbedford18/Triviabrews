@@ -17,12 +17,20 @@
     </div>
 </header>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<body>
+
+>>>>>>> 63addd538787db27bddcb480fc28ea5384121be0
+>>>>>>> 3e701851131af15e50c947e7efd99663c5473721
 <section class="image-bgc">
 
 </section>
 
 <body>
-    <section id="start-page" class="activeInfo">
+    <section id="start-page" style = "display: block;">
 
         <div class="grid-x">
             <div class="card grid-x column" id="Instruction-container">
@@ -73,12 +81,20 @@
     </section>
     <!--Caroline's edits for trivia question page START-->
     <!--note: make all the edits that are needed so long as the id names stay the same I can figure out the changes easy :)-->
-    <section id = "trivia-page" class ="hidden">
+    <section id = "trivia-page" style ="display: none;">
         <div id="question-container">
             <!--append question here-->
+            <h2 id ="question"></h2>
         </div>
-        <!--div to display if user answered correctly or incorrectly-->
-        <div id="feedback" class="hidden"></div>
+        <div id = "choices-container">
+            <p><button id="btnA" class="btn"></button></p>
+            <p><button id="btnB" class="btn"></button></p>
+            <p><button id="btnC" class="btn"></button></p>
+            <p><button id="btnD" class="btn"></button></p>
+            <!--horizontal break-->
+            <hr id="lineBreak"  class="mt-4">
+            <p id="answerCheck"></p>
+        </div>
     </section>
     <!--Caroline edits for trivia page END-->
     <footer class="grid-x grid-padding-x align-right">

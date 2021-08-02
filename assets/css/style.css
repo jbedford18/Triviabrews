@@ -1,3 +1,5 @@
+/*
+replcing these w style = "display:none" in the html
 .active{
     display: block;
 }
@@ -6,6 +8,7 @@
     display: none;
 }
 
+*/
 #Instruction-container {
     background-image: linear-gradient(to right, rgb(154, 154, 218), orange);
 }
@@ -45,6 +48,7 @@
 
 body {
     background-color: rgb(192, 157, 207);
+    padding-bottom: 65px;
 }
 
 header h1{
@@ -59,8 +63,8 @@ header h1{
 }
 
 footer {
-    
-    position: fixed;
+
+    position:fixed ;
             padding: 10px 10px 0px 10px;
             bottom: 0;
             width: 100%;
