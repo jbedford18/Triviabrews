@@ -84,14 +84,14 @@ function loadTriviaQuestions(data){
     var question = JSON.stringify(data.results[i].question);
 
     var questionContainer = $("#question-container");
-   
+    
     questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
     //stringify needed to get the special chars in the html
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ dataChoice1+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
-    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataCorrectChoice+'</label></input>');
+    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+dataCorrectChoice+'</label></input>');
 
     //$("#submit-button").on("click", checkAnswers);
 }
@@ -118,33 +118,29 @@ function loadTriviaQuestions(data){
 };
 
 //function to check answers
-function checkAnswers(event, data){
+function checkAnswers(event){
     event.preventDefault();
-    //console.log(event.target);
-    var correctAns;
-    var inputAns = [];
-    var corrects = 0;
-    var incorrects = 0;
-    var blanks = 0;
-    inputAns= $('input[type=radio]:checked +label').text();
-    console.log(inputAns);
-    //hardcoding 10 in here bc still havent figured out how to load api data into arrays
-    for(var i = 0; i < 10; i++){
-        //inputAns = $('input[type=radio'+i+']:checked +label').text();
-        //console.log(correctChoices[i]);
-       if(inputAns[i] === correctChoices[i]){
-          console.log("correct");
-          console.log(correctChoices[i]);
-          console.log(inputAns);
+   
+    var userInput = document.querySelectorAll("input[type=radio]:checked");
+
+    console.log(userInput);
+
+    if(userInput.length < 11){
+    for(var i = 0 ; i < 10; i++){
+        //console.log(userInput[i].nextSibling);
+       //console.log(correctChoices[i]);
+        if(userInput[i].nextSibling.textContent === correctChoices[i]){
+            console.log("correct");
         }
-        //else if(inputAns === ""){
-        // alert("you must answer all questions");
-        // }
-        else if(inputAns !== correctChoices[i]){
-          console.log("wrong!");
+        else if(userInput[i].nextSibling.textContent !== correctChoices[i]){
+            console.log("wrong!");
         }
     }
-    //console.log(inputAns);
+}
+else{
+    alert("you need to answer all the questions");
+    return;
+}
 };
 
 //function to determine timer state
