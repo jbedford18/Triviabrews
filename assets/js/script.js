@@ -1,29 +1,18 @@
-$( document ).ready(function() {
-});
-
-//^not sure if i need this tbh
-//GLOBAL VARIABLES START
 var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
 var triviaPage = document.getElementById("trivia-page");
-var submitBtnEl = document.getElementById("submit-button");
 var highScoresPage = document.getElementById("high-scores-page");
-///////////vars for trying to do one question perpage
-////////////////////////////////////////////////////////////////////////////////////
+var timerEl = document.getElementById("timer");
+var finalScoreEl = document.getElementById("finalScore");
+var savedHighScores = document.getElementById("savedHighScores");
+var finalTime = document.getElementById("finalTime");
+var initialInputPage = document.getElementById("initial-input-page");
+var initialsInputEl = document.getElementById("initials-input");
+var initialSubmitBtn = document.getElementById("initialsSubmit");
 var choices = [];
 var questions = [];
 var correctChoices = [];
-var questionEl = document.getElementById("question");
-var choiceA = document.getElementById("btnA");
-var choiceB = document.getElementById("btnB");
-var choiceC = document.getElementById("btnC");
-var choiceD = document.getElementById("btnD");
 
-//GLOBAL VARIABLES END
-//REFACTOR HERE: when MVP is 100% to add dropdown functionality we must include some foundation files in the js, 
-//var dropDown = new Foundation.DropdownMenu(element, options);
-//initialize time at 60 seconds
-//var time = 60; 
 //function to get trivia category 
 function fetchQuestion(){
     var apiUrl="https://opentdb.com/api.php?amount=10";
@@ -78,33 +67,17 @@ function loadTriviaQuestions(data){
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+dataCorrectChoice+'</label></input>');
-
-    //$("#submit-button").on("click", checkAnswers);
 }
     questionContainer.append('<button class="success button" id="submit-button" type="submit">Submit Now!</button>');    
-    //console.log("questions: "+questions);
-    //console.log("correct ansers: "+correctChoices);
-    //console.log("incorrect anseers:" + choices);
+    //questionContainer.append(submitBtn);
 
-    //var possibleAnswers = correctChoices.concat(choices);
-    //array of both correct and incorrect answers
-    //console.log(possibleAnswers);
-    //This function and the above arrs are temporarily out of order
-    //displayTriviaQuestions(questions, correctChoices, choices);
-    //Button to for event listner to check answers at the end of 10 questions
-    //var submitBtnEl = '<button class="success button" id="submit-button" type="submit">Submit Now!</button>';
-    questionContainer.append(submitBtnEl);
-    //submitBtnEl.addEventListener("click", function(){
-     //   checkAnswers(data);
-    //});
-    //$("#submit-button").on("click", checkAnswers(data));
     $("#submit-button").on("click", checkAnswers);
-    
-    //submitBtnEl.addEventListener("click", checkAnswers);
 };
 
 //function to check answers
 function checkAnswers(event){
+    var corrects= 0;
+    //stopTimer();
     event.preventDefault();
     var userInput = document.querySelectorAll("input[type=radio]:checked");
     //console.log(userInput.length);
@@ -113,6 +86,7 @@ function checkAnswers(event){
         //console.log(userInput[i].nextSibling);
        //console.log(correctChoices[i]);
         if(userInput[i].nextSibling.textContent === correctChoices[i]){
+            corrects ++;
             console.log("correct");
         }
         else if(userInput[i].nextSibling.textContent !== correctChoices[i]){
@@ -124,24 +98,82 @@ function checkAnswers(event){
     alert("you need to answer all the questions");
     return;
 }
-hide(triviaPage);
-display(highScoresPage);
+ displayInputPage(corrects);
 };
 
-//function to determine timer state
-// function timer(){
-//     timer.textContent
-// };
+function displayInputPage(corrects){
+    hide(highScoresPage);
+    hide(triviaPage);
+    display(initialInputPage);
+    storeScores(corrects);
+;}
 
+//function to display all scores
+function showScores(points){
+    hide(triviaPage);
+    hide(initialInputPage);
+    display(highScoresPage);
+    var savedScores =  localStorage.getItem("high scores");
+    if(savedScores === null){
+        console.log("none saved");
+        return;
+    }
+    var storedScores = savedScores;
+    console.log(storedScores.initials);
+    console.log(storedScores.score);
+};
+
+//function tp briung up highscore input page after submitting trivia 
+function showInputPage(){
+    hide(triviaPage);
+    display(initialInputPage);
+    finalScoreEl.textContent = ("Final Score: " + points);
+};
+
+//function to staore highscores into localstorage
+function storeScores(points){
+    var savedScores = [];
+    savedScores = localStorage.getItem("high scores");
+    var scoresArr;
+    if(savedScores === null){
+        scoresArr = [];
+    }
+    else{
+        scoresArr = savedScores;
+    }
+    var userScore = {
+        initials: initialsInputEl.textContent,
+        score: finalScore.textContent
+    }
+    console.log(userScore);
+    
+};
+initialSubmitBtn.addEventListener("click", showScores);
+
+function stopTimer(){
+    clearInterval();
+};
+
+//function to initialize the game on start button click
 function startGame(){
+    var count = 60;
+    //nested function to start timer
+    var startTimer = setInterval(function(){
+        count --;
+        timerEl.textContent = count;
+        if(count <= 0){
+            clearInterval(startTimer);
+        }
+    }, 1000);
     fetchQuestion();
     hide(startPage);
     display(triviaPage);
 };
 
-///////////////////////////event listeners//////////////////////////////////////
+
+
 startButton.addEventListener("click", startGame);
-//startButton.addEventListener("click", hideStart);
+
 
 //hides element
 function hide(element) {

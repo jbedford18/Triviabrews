@@ -23,7 +23,7 @@
 <section class="time-box grid-x grid-padding-x align-center">
 
     <div id="time">
-        <h4>Time Left: </h4>
+        <div>Timer :  <span id = "timer">0</span></div>
         <div id="seconds">2</div>
     </div>
 
@@ -89,19 +89,31 @@
         </div>
 
     </section>
-
+<!--caroline adding in this user input page to save high score-->
+    <!--taking input for user scores-->
+    <div id = "initial-input-page" style="display: none;">
+        <h1>All Done!</h1>
+        <div id="finalTime" class="col text-right" style="display: none;">Time's Up!</div>
+        <p><span id = "finalScore"></span></p>
+        <p>Enter Initials: <input type = "text" id = "initials-input"></p>
+        <button type = "button" id = "initialsSubmit">Submit </button>
+    </div>
+    <!--highscore page-->
     <section id="high-scores-page" style="display: none;">
-
        <div class="highscore">
         <h3>The Highest of Scores!</h3>
-        <div class="total-score"> <p>Total Score: </p></div>
-            <div class="highest-score"> <p>Highest Score: </p></div>
-                <div class="?"><p>??</p></div>
-                <button class="hollow button warning" href="#">Later Nerds</button>
+        <div class="total-score"> 
+            
+        </div>
+        <div class="highest-score"> 
+            <p id ="savedHighScores">High Scores: </p>
+        </div>
+        <div class="?">
+            <p id = "finalTime"></p>
+        </div>
+            <button class="hollow button warning" href="#">Later Nerds</button>
         </div> 
-            </section>
-    
-    
+        </section>
             <!--Caroline edits for trivia page END-->
     <footer class="grid-x grid-padding-x align-right">
         <p>Made with swag by (group)</p>
