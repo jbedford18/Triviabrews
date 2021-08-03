@@ -104,6 +104,10 @@ footer {
         padding: 10px 8px;
     }
 
+    #time:hover {
+        color: red;
+    }
+
     #seconds {
         padding: 10px;
         font-size: 21px;
@@ -112,6 +116,11 @@ footer {
 
     }
    
+    span {
+        font-weight: bold;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
     
     
 
