@@ -121,7 +121,9 @@ footer {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     
-    
+    .time-box {
+        padding: 10px;
+    }
     
 
 
