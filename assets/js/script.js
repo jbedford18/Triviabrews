@@ -132,6 +132,7 @@ function showInputPage(){
 
 //function to staore highscores into localstorage
 function storeScores(points){
+    
     var savedScores = [];
     savedScores = localStorage.getItem("high scores");
     var scoresArr;
