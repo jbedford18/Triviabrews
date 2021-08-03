@@ -7,7 +7,7 @@ var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
 var triviaPage = document.getElementById("trivia-page");
 var submitBtnEl = document.getElementById("submit-button");
-
+var highScoresPage = document.getElementById("high-scores-page");
 ///////////vars for trying to do one question perpage
 ////////////////////////////////////////////////////////////////////////////////////
 var choices = [];
@@ -53,20 +53,6 @@ function loadTriviaQuestions(data){
     //removeing hidden class and making page active
     triviaPage.classList.remove("hidden");
     triviaPage.classList.add("activeInfo");
-   
-    //REFACTOR HERE: clear off previous question
-    //questionContainer.innerHTML = "";
-    //REFACTOR HERE: IDEALLY, ID LIKE THIS TO BE A LOOP BC CHOICES CAN RANGE FROM 2-3 OPTIONS
-    //console.log(data.results[0].incorrect_answers.length);
-    //for(var i = 0; i < choicesArr.length; i++){
-        //console.log(data.results[i].question);
-        //console.log(choicesArr[i]);
-        //var choiceEl = document.getElementById("choice" + i);
-        // var choice = data.results[0].incorrect_answers[i];
-        //choiceEl.textContent = choice;
-        //console.log(choice);
-   // };    
-
    //use push methods to load trhese arrs
    //iterate thru all 10 questions and their possible choices
    for(var i = 0; i < data.results.length; i++){
@@ -120,12 +106,9 @@ function loadTriviaQuestions(data){
 //function to check answers
 function checkAnswers(event){
     event.preventDefault();
-   
     var userInput = document.querySelectorAll("input[type=radio]:checked");
-
-    console.log(userInput);
-
-    if(userInput.length < 11){
+    //console.log(userInput.length);
+    if(userInput.length === 10){
     for(var i = 0 ; i < 10; i++){
         //console.log(userInput[i].nextSibling);
        //console.log(correctChoices[i]);
@@ -135,12 +118,14 @@ function checkAnswers(event){
         else if(userInput[i].nextSibling.textContent !== correctChoices[i]){
             console.log("wrong!");
         }
+        }
     }
-}
-else{
+    else{
     alert("you need to answer all the questions");
     return;
 }
+hide(triviaPage);
+display(highScoresPage);
 };
 
 //function to determine timer state
@@ -154,7 +139,7 @@ function startGame(){
     display(triviaPage);
 };
 
-///////////////////////////event listeners///////////////////////////
+///////////////////////////event listeners//////////////////////////////////////
 startButton.addEventListener("click", startGame);
 //startButton.addEventListener("click", hideStart);
 
