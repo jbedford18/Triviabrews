@@ -9,9 +9,11 @@ var finalTime = document.getElementById("finalTime");
 var initialInputPage = document.getElementById("initial-input-page");
 var initialsInputEl = document.getElementById("initials-input");
 var initialSubmitBtn = document.getElementById("initialsSubmit");
+var scoresContainer = document.getElementById("highscores");
 var choices = [];
 var questions = [];
 var correctChoices = [];
+var points;
 
 //function to get trivia category 
 function fetchQuestion(){
@@ -76,9 +78,10 @@ function loadTriviaQuestions(data){
 
 //function to check answers
 function checkAnswers(event){
-    var corrects= 0;
+    points = 0;
     //stopTimer();
     event.preventDefault();
+    clearInterval(timerEl);
     var userInput = document.querySelectorAll("input[type=radio]:checked");
     //console.log(userInput.length);
     if(userInput.length === 10){
@@ -86,7 +89,7 @@ function checkAnswers(event){
         //console.log(userInput[i].nextSibling);
        //console.log(correctChoices[i]);
         if(userInput[i].nextSibling.textContent === correctChoices[i]){
-            corrects ++;
+            points ++;
             console.log("correct");
         }
         else if(userInput[i].nextSibling.textContent !== correctChoices[i]){
@@ -98,57 +101,51 @@ function checkAnswers(event){
     alert("you need to answer all the questions");
     return;
 }
- displayInputPage(corrects);
+ displayInputPage(points);
 };
 
 function displayInputPage(corrects){
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
-    storeScores(corrects);
+    finalScoreEl.textContent = points;
+    storeScores();
+
 ;}
 
 //function to display all scores
-function showScores(points){
+var savedScores = [];
+function showScores(){
     hide(triviaPage);
     hide(initialInputPage);
     display(highScoresPage);
-    var savedScores =  localStorage.getItem("high scores");
-    if(savedScores === null){
-        console.log("none saved");
-        return;
-    }
-    var storedScores = savedScores;
-    console.log(storedScores.initials);
-    console.log(storedScores.score);
-};
 
-//function tp briung up highscore input page after submitting trivia 
-function showInputPage(){
-    hide(triviaPage);
-    display(initialInputPage);
-    finalScoreEl.textContent = ("Final Score: " + points);
+    for(var i = 0; i < savedScores.length; i++){
+        var scoreItem = document.createElement("div");
+        console.log(scoreItem);
+        scoreItem.textContent = savedScores[i].initials +" - "+savedScores[i].userScore +" points";
+        scoresContainer.append(scoreItem);
+    }
 };
 
 //function to staore highscores into localstorage
-function storeScores(points){
-    var savedScores = [];
-    savedScores = localStorage.getItem("high scores");
-    var scoresArr;
-    if(savedScores === null){
-        scoresArr = [];
-    }
-    else{
-        scoresArr = savedScores;
-    }
-    var userScore = {
-        initials: initialsInputEl.textContent,
-        score: finalScore.textContent
+
+function storeScores(){
+    var initValue = initialsInputEl.value.trim();
+    if(initValue){
+        var userScore = {
+            initials: initialsInputEl.value.trim(),
+            userScore: finalScore.textContent
+        }
+        initialsInputEl.value ="";
+        savedScores = JSON.parse(localStorage.getItem("high scores")) || [];
+        savedScores.push(userScore);
+        localStorage.setItem("high scores", JSON.stringify(savedScores));
+        showScores();
     }
     console.log(userScore);
-    
 };
-initialSubmitBtn.addEventListener("click", showScores);
+initialSubmitBtn.addEventListener("click", displayInputPage );
 
 function stopTimer(){
     clearInterval();
@@ -170,10 +167,7 @@ function startGame(){
     display(triviaPage);
 };
 
-
-
 startButton.addEventListener("click", startGame);
-
 
 //hides element
 function hide(element) {
