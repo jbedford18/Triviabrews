@@ -108,7 +108,7 @@ function displayInputPage(corrects){
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
-    finalScoreEl.textContent = points;
+    finalScoreEl.textContent = "Your Score - " + points;
     storeScores();
 
 ;}
