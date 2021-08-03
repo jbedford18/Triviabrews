@@ -131,6 +131,7 @@ footer {
     #choice3,
     #choice4 {
         font-size: 16px;
+
     }
 
     #choice1:hover, 
@@ -139,6 +140,10 @@ footer {
     #choice4:hover {
         color: orange;
         text-shadow: 0 0 10px rgba(58, 20, 20, 0.5);
+        background-color: olivedrab;
+        opacity:1;
+        cursor:pointer;
+        border-radius:25px;
 
     }
 
