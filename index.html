@@ -13,7 +13,7 @@
 </head>
 <header>
     <div class="grid-x grid-padding-x align-center">
-    <h1>Trivia Game</h1>
+        <h1>Trivia Game</h1>
     </div>
 </header>
 
@@ -21,17 +21,17 @@
 
 </section>
 <section class="time-box grid-x grid-padding-x align-center">
-    
+
     <div id="time">
-    <h4>Time Left: </h4> 
-    <div id="seconds">2</div>
+        <h4>Time Left: </h4>
+        <div id="seconds">2</div>
     </div>
 
 
 </section>
 
 <body>
-    <section id="start-page" style = "display: block;">
+    <section id="start-page" style="display: block;">
 
         <div class="grid-x">
             <div class="card grid-x column" id="Instruction-container">
@@ -48,63 +48,58 @@
                     <div id="categories"></div>
                 </div>
             </div>
-            
+
             <div class="card grid-x column" id="bgc">
-                <div id="bgc-2" class="card-divider align-self-middle cell medium-3" >
+                <div id="bgc-2" class="card-divider align-self-middle cell medium-3">
                     <h3>Gameplay!</h3>
                 </div>
                 <div class="card-section cell small-6">
                     <p>Choose a category in order to play!</p>
                 </div>
- 
+
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li class="is-dropdown-submenu-parent">
-                      <a href="#"> Category Options </a>
-                      <ul class="menu" id = "categories">
-                        <li><a href="#option"></a></li>
-                        <li><a href="#option"></a></li>
-                        <li><a href="#option"></a></li>
-                        <li><a href="#option"></a></li>
-                        <li><a href="#option"></a></li>
-                      </ul>
-                    </li> 
-                  </ul>
-                  <div class="cell small-4">
+                        <a href="#"> Category Options </a>
+                        <ul class="menu" id="categories">
+                            <li><a href="#option"></a></li>
+                            <li><a href="#option"></a></li>
+                            <li><a href="#option"></a></li>
+                            <li><a href="#option"></a></li>
+                            <li><a href="#option"></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="cell small-4">
                     <button class="button alert" id="start-btn"> Start Game </button>
                 </div>
             </div>
         </div>
         <div class="grid-x grid-padding-x align-right">
             <div class="cell small-4">
-            <button class="button alert" id="highscores-btn"> View Highscores </button>
-            </div>      
+                <button class="button alert" id="highscores-btn"> View Highscores </button>
+            </div>
         </div>
     </section>
     <!--Caroline's edits for trivia question page START-->
     <!--note: make all the edits that are needed so long as the id names stay the same I can figure out the changes easy :)-->
-    <section id = "trivia-page" style ="display: none;">
+    <section id="trivia-page" style="display: none;">
         <div id="question-container">
             <!--append question here-->
-            <h1 id = "question"></h1>
+            <h1 id="question"></h1>
         </div>
+
+    </section>
+
+    <section id="high-scores-page" style="display: none;">
+        <div class="total-score"> <p>Total Score: </p></div>
+            <div class="highest-score"> <p>Highest Score: </p></div>
+                <div class="?"><p>??</p></div>
+                <button class="exit-btn">Exit Quiz</button>
+
+            </section>
     
-    </section>
-
-    <section style="display: none;">
-        <div id="high-scores-page">
-            <div class="total-score">
-            <div class="highest-score">
-            <div class="?">
-
-            </div>
-            <!-- <button class="exit-btn"><p>Exit Quiz</p></button> -->
-            </div>
-        </div>
-    </div>
-
-
-    </section>
-    <!--Caroline edits for trivia page END-->
+    
+            <!--Caroline edits for trivia page END-->
     <footer class="grid-x grid-padding-x align-right">
         <p>Made with swag by (group)</p>
     </footer>
@@ -113,4 +108,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
