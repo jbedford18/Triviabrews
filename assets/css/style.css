@@ -88,8 +88,9 @@ footer {
 }
 
 #question-container {
-    text-shadow: 0 0 10px rgba(99, 40, 40, 0.5);
+    text-shadow: 0 0 10px rgba(87, 32, 32, 0.5);
     color: orange;
+    padding: 15px;
     }
 
     #time {
@@ -125,6 +126,22 @@ footer {
         padding: 10px;
     }
     
+    #choice1, 
+    #choice2,
+    #choice3,
+    #choice4 {
+        font-size: 16px;
+    }
+
+    #choice1:hover, 
+    #choice2:hover,
+    #choice3:hover,
+    #choice4:hover {
+        color: orange;
+        text-shadow: 0 0 10px rgba(58, 20, 20, 0.5);
+
+    }
+
 
 
 
