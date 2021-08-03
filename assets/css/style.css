@@ -158,6 +158,13 @@ footer {
         padding: 10px;
     
 }
+
+#high-scores-page {
+    margin: auto;
+    width: 70%;
+    align-content: center;
+
+}
    
 #initial-input-page h1{
     margin: auto;
