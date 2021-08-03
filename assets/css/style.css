@@ -97,24 +97,17 @@ footer {
         display: inline-flex;
         align-items: center;
         justify-content: space-between;
-        width: 170px;
+        width: 110px;
         height: 60px;
         background: rgb(202, 134, 57);
         border: 1px dotted rgb(139, 57, 160);
         border-radius: 6px;
         padding: 10px 8px;
+        font-size: larger;
     }
 
     #time:hover {
         color: red;
-    }
-
-    #seconds {
-        padding: 10px;
-        font-size: 21px;
-        height: 55px;
-        background-color: rgb(184, 184, 224);
-
     }
    
     span {
@@ -166,3 +159,30 @@ footer {
     
 }
    
+#initial-input-page h1{
+    margin: auto;
+    width: 19%;
+    background-color: orange;
+    border: 2px black solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#initial-input-page p{
+    margin: auto;
+    width: 50%;
+}
+
+#initialsSubmit{
+    align-content: center;
+    color: white;
+    background-color: red;
+    display: flex;
+    padding: 15px;
+    margin: auto;
+
+}
+
+#initialsSubmit:hover{
+    background-color: lightcoral;
+}
