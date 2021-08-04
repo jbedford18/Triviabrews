@@ -49,26 +49,22 @@ function displayCategories(category) {
 //function to display trivia question page...similar to how the highscore page funciton will work
 function loadTriviaQuestions(data) {
     var triviaPage = document.getElementById("trivia-page");
-    //removeing hidden class and making page active
-    triviaPage.classList.remove("hidden");
-    triviaPage.classList.add("activeInfo");
-<<<<<<< HEAD
    //use push methods to load trhese arrs
    //iterate thru all 10 questions and their possible choices
    for(var i = 0; i < data.results.length; i++){
     correctChoices.push(data.results[i].correct_answer);
     questions.push(data.results[i].correct_answer);
     //new arr[] logic tesing:
-    var test = []; 
+    //var test = []; 
     
-    for(var j = 0; j < 3; j++){
-        //test[i] = data.results[i].incorrect_answers[j];
-        //console.log(data.results[i].incorrect_answers[j]);
-        test.push(data.results[i].incorrect_answers[j]);
-        choices.push(data.results[i].incorrect_answers[j]);
-        console.log("i = "+i);
-        console.log("j = " + j);
-    }
+    // for(var j = 0; j < 3; j++){
+    //     //test[i] = data.results[i].incorrect_answers[j];
+    //     //console.log(data.results[i].incorrect_answers[j]);
+    //     test.push(data.results[i].incorrect_answers[j]);
+    //     choices.push(data.results[i].incorrect_answers[j]);
+    //     console.log("i = "+i);
+    //     console.log("j = " + j);
+    // }
     
     var dataChoice1 = data.results[i].incorrect_answers[0];
     var dataChoice2 = data.results[i].incorrect_answers[1];
@@ -79,47 +75,16 @@ function loadTriviaQuestions(data) {
     var questionContainer = $("#question-container");
     
     questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
-
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ dataChoice1+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+dataCorrectChoice+'</label></input>');
 }
-=======
-    //use push methods to load trhese arrs
-    //iterate thru all 10 questions and their possible choices
-    for (var i = 0; i < data.results.length; i++) {
-        correctChoices.push(data.results[i].correct_answer);
-        questions.push(data.results[i].correct_answer);
-        //new arr[] logic tesing:
-        for (var j = 0; j < 3; j++) {
-            choices.push(data.results[i].incorrect_answers[j]);
-        }
-        //////////////alternate logic for displaying questions on pgae
-        var dataChoice1 = data.results[i].incorrect_answers[0];
-        var dataChoice2 = data.results[i].incorrect_answers[1];
-        var dataChoice3 = data.results[i].incorrect_answers[2];
-        var dataCorrectChoice = data.results[i].correct_answer;
-        var question = JSON.stringify(data.results[i].question);
 
-        var questionContainer = $("#question-container");
-
-        questionContainer.append('<h2 id = "question">' + (i + 1) + ")." + question + '</h2>');
-        //stringify needed to get the special chars in the html
-        questionContainer.append('<input name = "answer' + i + '" type = "radio"><label id = "choice1">' + dataChoice1 + '</label></input>');
-        questionContainer.append('<input name = "answer' + i + '" type = "radio"><label id = "choice2">' + dataChoice2 + '</label></input>');
-        questionContainer.append('<input name = "answer' + i + '" type = "radio"><label id = "choice3">' + dataChoice3 + '</label></input>');
-        //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
-        questionContainer.append('<input name = "answer' + i + '" type = "radio"><label id = "choice4">' + dataCorrectChoice + '</label></input>');
-    }
-    //questionContainer.append('<button class="success button" id="submit-button" type="submit">Submit Now!</button>');    
-    //questionContainer.append(submitBtn);
->>>>>>> 800107e281c68f7855fd17c98354dfa1631752d5
-
-for(var i = 0; i < 10; i++){
-        console.log(test[i]);
-}
+//for(var i = 0; i < 10; i++){
+  //      console.log(test[i]);
+//}
 };
 
 //function to check answers
@@ -155,7 +120,7 @@ function displayInputPage() {
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
-    finalScoreEl.textContent = points;
+    finalScoreEl.textContent = "Final Score " + points;
     storeScores();
     
 }
@@ -171,7 +136,7 @@ function showScores() {
     for (var i = 0; i < savedScores.length; i++) {
         var scoreItem = document.createElement("div");
         console.log(scoreItem);
-        scoreItem.textContent = savedScores[i].initials + " final Score: " + savedScores[i].userScore + " points";
+        scoreItem.textContent = savedScores[i].initials + ": " + savedScores[i].userScore + " points";
         scoresContainer.append(scoreItem);
     }
 };
@@ -236,18 +201,11 @@ function display(element) {
     element.style.display = "block";
 };
 
-<<<<<<< HEAD
-function toHighScores(){
-    storeScores();
-    showScores();
-=======
 function toHighScores() {
->>>>>>> 800107e281c68f7855fd17c98354dfa1631752d5
     hide(startPage);
     display(highScoresPage);
-    console.log(localStorage)
-    $("#savedHighScores").text("high scores:" + savedScores[0].initials)
-    
+    showScores();
+    //$("#savedHighScores").text("high scores:" + savedScores[0].initials)
 
 };
 
