@@ -115,6 +115,9 @@ footer {
     #choice3,
     #choice4 {
         font-size: 16px;
+        /* display: flex;
+        padding: 5px;
+        justify-content: space-around; */
 
     }
 
