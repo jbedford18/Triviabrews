@@ -104,13 +104,12 @@ function checkAnswers(event){
  displayInputPage(points);
 };
 
-function displayInputPage(corrects){
+function displayInputPage(){
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
     finalScoreEl.textContent = points;
     storeScores();
-
 ;}
 
 //function to display all scores
@@ -123,13 +122,12 @@ function showScores(){
     for(var i = 0; i < savedScores.length; i++){
         var scoreItem = document.createElement("div");
         console.log(scoreItem);
-        scoreItem.textContent = savedScores[i].initials +" - "+savedScores[i].userScore +" points";
+        scoreItem.textContent = savedScores[i].initials +" final Score: "+savedScores[i].userScore +" points";
         scoresContainer.append(scoreItem);
     }
 };
 
 //function to staore highscores into localstorage
-
 function storeScores(){
     var initValue = initialsInputEl.value.trim();
     if(initValue){
@@ -145,6 +143,7 @@ function storeScores(){
     }
     console.log(userScore);
 };
+
 initialSubmitBtn.addEventListener("click", displayInputPage );
 
 function stopTimer(){
