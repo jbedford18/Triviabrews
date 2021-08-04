@@ -81,7 +81,9 @@ function loadTriviaQuestions(data) {
     //questionContainer.append('<button class="success button" id="submit-button" type="submit">Submit Now!</button>');    
     //questionContainer.append(submitBtn);
 
-    //$("#submit-button").on("click", checkAnswers);
+for(var i = 0; i < 10; i++){
+        // console.log(test[i]);
+}
 };
 
 //function to check answers
@@ -117,7 +119,7 @@ function displayInputPage() {
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
-    finalScoreEl.textContent = "Your Score: " + points;
+    finalScoreEl.textContent = points;
     storeScores();
     
 }
