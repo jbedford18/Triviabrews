@@ -31,6 +31,15 @@
 </section>
 
 <body>
+
+    <div class="reveal" id="Modal1" data-reveal>
+        <h1>Please</h1>
+        <p class="lead">Answer all questions before submitting! </p>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
     <section id="start-page" style="display: block;">
 
         <div class="grid-x">
@@ -43,7 +52,8 @@
                         <li><span>Rule 1:</span> Click the "Start Game" button to play!</li>
                         <li><span>Rule 2:</span> You will have a total of 60 seconds to answer all the questions!</li>
                         <li><span>Rule 3:</span> You must answer every question before submitting the final answer!</li>
-                        <li><span>Rule 4:</span> You can review your results at the end of the game!</li>
+                        <li><span>Rule 4:</span> You can only select one answer per question!</li>
+                        <li><span>Rule 5:</span> You must click the circle when selecting an answer!</li>
                     </ul>
                     <div id="categories"></div>
                 </div>
@@ -53,11 +63,12 @@
                 <div id="bgc-2" class="card-divider align-self-middle cell medium-3">
                     <h3>Gameplay!</h3>
                 </div>
-                <div class="card-section cell small-6">
-                    <p>Choose a category in order to play!</p>
+                <div class="card-section cell small-9">
+                    <p>Select Start Game in order to play!</p>
+                    <p>Choose the View Highscores below to see High Scores!</p>
                 </div>
 
-                <ul class="dropdown menu" data-dropdown-menu>
+                <!-- <ul class="dropdown menu" data-dropdown-menu>
                     <li class="is-dropdown-submenu-parent">
                         <a href="#"> Category Options </a>
                         <ul class="menu" id="categories">
@@ -68,13 +79,13 @@
                             <li><a href="#option"></a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul> -->
                 <div class="cell small-4">
                     <button class="button alert" id="start-btn"> Start Game </button>
                 </div>
             </div>
         </div>
-        <div class="grid-x grid-padding-x align-right">
+        <div class="grid-x grid-padding-x align-right ">
             <div class="cell small-4">
                 <button class="button alert" id="highscores-btn"> View Highscores </button>
             </div>
@@ -109,7 +120,7 @@
         <div class="?">
             <p id = "finalTime"></p>
         </div>
-            <button class="hollow button warning" href="#">Later Nerds</button>
+            <button id="redo-btn" class="hollow button warning" href="#">Later Nerds</button>
         </div> 
         </section>
             <!--Caroline edits for trivia page END-->

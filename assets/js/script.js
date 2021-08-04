@@ -10,6 +10,7 @@ var initialInputPage = document.getElementById("initial-input-page");
 var initialsInputEl = document.getElementById("initials-input");
 var initialSubmitBtn = document.getElementById("initialsSubmit");
 var scoresContainer = document.getElementById("highscores");
+var modal1 = document.getElementById("Modal1");
 var choices = [];
 var questions = [];
 var correctChoices = [];
@@ -98,7 +99,8 @@ function checkAnswers(event){
         }
     }
     else{
-    alert("you need to answer all the questions");
+    display(modal1);
+    
     return;
 }
  displayInputPage(points);
@@ -108,7 +110,7 @@ function displayInputPage(){
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
-    finalScoreEl.textContent = points;
+    finalScoreEl.textContent = "Your Score - " + points;
     storeScores();
 ;}
 
@@ -182,4 +184,13 @@ function display(element) {
 // var highScoresBtn = document.getElementById("highscores-btn")
 // highScores.addEventListener("click", highScores)
 // function highScores ()
+
+// var redoButton = document.getElementById("redo-btn")
+
+// function restart(data){
+//     triviaPage.classList.remove("hidden");
+//     triviaPage.classList.remove("activeInfo");
+   
+// }
+// redoButton.addEventListener("click", restart);
 

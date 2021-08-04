@@ -88,7 +88,7 @@ footer {
 }
 
 #question-container {
-    text-shadow: 0 0 10px rgba(87, 32, 32, 0.5);
+    text-shadow: 0 0 10px rgba(23, 30, 134, 0.5);
     color: orange;
     padding: 15px;
     }
@@ -158,6 +158,13 @@ footer {
         padding: 10px;
     
 }
+
+#high-scores-page {
+    margin: auto;
+    width: 70%;
+    align-content: center;
+
+}
    
 #initial-input-page h1{
     margin: auto;
@@ -185,4 +192,16 @@ footer {
 
 #initialsSubmit:hover{
     background-color: lightcoral;
+}
+
+#finalScore {
+    color: orange;
+    font-size: 25px;
+    text-shadow: 0 0 10px rgba(19, 31, 136, 0.5)
+
+}
+
+#finalScore:hover{
+    color: lightgray;
+
 }
