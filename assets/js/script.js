@@ -202,7 +202,7 @@ function toHighScores() {
     hide(startPage);
     display(highScoresPage);
     console.log(localStorage)
-    $("#savedHighScores").text("high scores:" + savedScores[0].initials)
+    $("#savedHighScores").text("high scores: " + savedScores[0].initials)
     
 
 };
