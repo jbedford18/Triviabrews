@@ -1,14 +1,3 @@
-/*
-replcing these w style = "display:none" in the html
-.active{
-    display: block;
-}
-
-.hidden{
-    display: none;
-}
-
-*/
 #Instruction-container {
     background-image: linear-gradient(to right, rgb(154, 154, 218), orange);
 }

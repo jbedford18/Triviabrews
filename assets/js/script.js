@@ -1,6 +1,7 @@
 var startButton = document.getElementById("start-btn");
 var startPage = document.getElementById("start-page");
 var triviaPage = document.getElementById("trivia-page");
+var submitTriviaBtn = document.getElementById("submit-button");
 var highScoresPage = document.getElementById("high-scores-page");
 var timerEl = document.getElementById("timer");
 var finalScoreEl = document.getElementById("finalScore");
@@ -10,7 +11,9 @@ var initialInputPage = document.getElementById("initial-input-page");
 var initialsInputEl = document.getElementById("initials-input");
 var initialSubmitBtn = document.getElementById("initialsSubmit");
 var scoresContainer = document.getElementById("highscores");
-var modal1 = document.getElementById("Modal1");
+//var modal1 = document.getElementById("Modal1");
+//var closeModal = document.getElementById("close-button");
+var highScoresBtn = document.getElementById("highscores-btn");
 var choices = [];
 var questions = [];
 var correctChoices = [];
@@ -71,10 +74,10 @@ function loadTriviaQuestions(data){
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+dataCorrectChoice+'</label></input>');
 }
-    questionContainer.append('<button class="success button" id="submit-button" type="submit">Submit Now!</button>');    
+    //questionContainer.append('<button class="success button" id="submit-button" type="submit">Submit Now!</button>');    
     //questionContainer.append(submitBtn);
 
-    $("#submit-button").on("click", checkAnswers);
+    //$("#submit-button").on("click", checkAnswers);
 };
 
 //function to check answers
@@ -98,9 +101,9 @@ function checkAnswers(event){
         }
         }
     }
-    else{
-    display(modal1);
-    
+    else if(userInput.length < 10){
+    //display(modal1);
+    //submitTriviaBtn.attributes.add('data-reveal = "Modal1"');
     return;
 }
  displayInputPage(points);
@@ -110,7 +113,7 @@ function displayInputPage(){
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
-    finalScoreEl.textContent = "Your Score - " + points;
+    finalScoreEl.textContent = "Your Score: " + points;
     storeScores();
 ;}
 
@@ -144,9 +147,13 @@ function storeScores(){
         showScores();
     }
     console.log(userScore);
+
 };
 
+submitTriviaBtn.addEventListener("click", checkAnswers);
 initialSubmitBtn.addEventListener("click", displayInputPage );
+highScoresBtn.addEventListener("click", toHighScores);
+
 
 function stopTimer(){
     clearInterval();
@@ -168,6 +175,11 @@ function startGame(){
     display(triviaPage);
 };
 
+// function shuffle(arr){
+//     var index = arr.length, temp, randIndex;
+//     while(0 !== index)
+// };
+
 startButton.addEventListener("click", startGame);
 
 //hides element
@@ -180,17 +192,22 @@ function display(element) {
     element.style.display = "block";
 };
 
+//function to take user to highscore page from start
+function toHighScores(){
+    hide(startPage);
+    display(highScoresPage);
+};
+
 // conner working on logic you can place where you like 
 // var highScoresBtn = document.getElementById("highscores-btn")
 // highScores.addEventListener("click", highScores)
 // function highScores ()
 
 // var redoButton = document.getElementById("redo-btn")
+//reset local variables
 
-// function restart(data){
-//     triviaPage.classList.remove("hidden");
-//     triviaPage.classList.remove("activeInfo");
-   
-// }
+$("#redo-btn").click(function(){
+    document.location.reload(true);
+  });
 // redoButton.addEventListener("click", restart);
 
