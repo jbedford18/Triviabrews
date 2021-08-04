@@ -192,7 +192,6 @@ function display(element) {
     element.style.display = "block";
 };
 
-//function to take user to highscore page from start
 function toHighScores(){
     hide(startPage);
     display(highScoresPage);
