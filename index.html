@@ -32,19 +32,18 @@
 
 <body>
 
-    <div class="reveal" id="Modal1" data-reveal>
-        <h2>Please!</h2>
-        <p class="lead">Answer all Questions before Submitting!!</p>
-        <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <div class="reveal" id="Modal1" >
+        <h1>Please</h1>
+        <p class="lead">Answer all questions before submitting! </p>
+        <button id = "close-button" class="close-button" data-close aria-label="Close reveal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
     <section id="start-page" style="display: block;">
-
         <div class="grid-x">
             <div class="card grid-x column" id="Instruction-container">
-                <div id="bgc-1" class="card-divider align-self-middle cell medium-4">
+                <div id="bgc-1" class="card-divider align-self-middle cell medium-3">
                     <h3>Instructions</h3>
                 </div>
                 <div class="card-section cell-small-6 ">
@@ -60,7 +59,7 @@
             </div>
 
             <div class="card grid-x column" id="bgc">
-                <div id="bgc-2" class="card-divider align-self-middle cell medium-3">
+                <div id="bgc-2" class="card-divider align-self-middle cell medium-4">
                     <h3>Gameplay!</h3>
                 </div>
                 <div class="card-section cell small-9">
@@ -98,7 +97,10 @@
             <!--append question here-->
             <h1 id="question"></h1>
         </div>
-
+        <!--debugg modal open and close here-->
+        <button type="submit"class="success button"data-reveal = "Modal1">MODALTEST</button>
+        
+        <p><button  class="success button" id="submit-button" type="submit">Submit Now!</button></p>
     </section>
 <!--caroline adding in this user input page to save high score-->
     <!--taking input for user scores-->
