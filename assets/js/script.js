@@ -181,6 +181,11 @@ function display(element) {
     element.style.display = "block";
 };
 
+//return to start page
+$("#redo-btn").click(function(){
+    document.location.reload(true);
+  });
+
 // conner working on logic you can place where you like 
 // var highScoresBtn = document.getElementById("highscores-btn")
 // highScores.addEventListener("click", highScores)
