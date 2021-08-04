@@ -54,30 +54,37 @@ function loadTriviaQuestions(data){
     correctChoices.push(data.results[i].correct_answer);
     questions.push(data.results[i].correct_answer);
     //new arr[] logic tesing:
+    var test = []; 
+    
     for(var j = 0; j < 3; j++){
+        //test[i] = data.results[i].incorrect_answers[j];
+        //console.log(data.results[i].incorrect_answers[j]);
+        test.push(data.results[i].incorrect_answers[j]);
         choices.push(data.results[i].incorrect_answers[j]);
+        console.log("i = "+i);
+        console.log("j = " + j);
     }
-    //////////////alternate logic for displaying questions on pgae
+    
     var dataChoice1 = data.results[i].incorrect_answers[0];
     var dataChoice2 = data.results[i].incorrect_answers[1];
     var dataChoice3 = data.results[i].incorrect_answers[2];
     var dataCorrectChoice = data.results[i].correct_answer;
+    //stringify needed to get the special chars in the html
     var question = JSON.stringify(data.results[i].question);
-
     var questionContainer = $("#question-container");
     
     questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
-    //stringify needed to get the special chars in the html
+
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ dataChoice1+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
     //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
     questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+dataCorrectChoice+'</label></input>');
 }
-    //questionContainer.append('<button class="success button" id="submit-button" type="submit">Submit Now!</button>');    
-    //questionContainer.append(submitBtn);
 
-    //$("#submit-button").on("click", checkAnswers);
+for(var i = 0; i < 10; i++){
+        console.log(test[i]);
+}
 };
 
 //function to check answers
@@ -113,7 +120,7 @@ function displayInputPage(){
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
-    finalScoreEl.textContent = "Your Score: " + points;
+    finalScoreEl.textContent = points;
     storeScores();
 ;}
 
@@ -193,6 +200,8 @@ function display(element) {
 };
 
 function toHighScores(){
+    storeScores();
+    showScores();
     hide(startPage);
     display(highScoresPage);
 };

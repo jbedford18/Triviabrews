@@ -1,11 +1,20 @@
-USER STORY:
+# SuperCool Trivia Game
 
-As a user of the SUPERCOOL TRIVIA GAME, 
-I WANT to be presented by a start page.
-The start page will have TRIVIA CATERGORY options,
-WHEN I select a category option, I am redirected to the
-QUIZ PAGE where I can answer QUIZ QUESTIONS based on the 
-CHOSEN CATEGORY.
-After completing the QUIZ QUESTIONS, I am presented with my
-SCORE. I have the option to SAVE my SCORE to be 
-displayed with other USER HIGHSCORES.
+## Purpose
+A website that offers the user 10 randomly generated trivia questions ranging from easy to hard difficulty. The user must answer each question in order to submit their high score under their chosen username. The saved highscores are displayed after the user selects a username to saved their score under. The user can return to the start page from the high score page and play again.   
+
+## Built With
+* HTML
+* CSS
+* Javascript
+* OpenTrivia API
+* - second api -
+* Foundation CSS framework
+
+## Website
+ - url - 
+
+## Contribution
+Made with ❤️ by Caroline Luce, Conner Cochrane, & Justin Bedford
+
+### ©️2021 SuperCoolGames
