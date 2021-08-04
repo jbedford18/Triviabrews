@@ -10,7 +10,7 @@ var initialInputPage = document.getElementById("initial-input-page");
 var initialsInputEl = document.getElementById("initials-input");
 var initialSubmitBtn = document.getElementById("initialsSubmit");
 var scoresContainer = document.getElementById("highscores");
-var modal1 = document.getElementById("Modal1");
+// var modal1 = document.getElementById("Modal1");
 var choices = [];
 var questions = [];
 var correctChoices = [];
@@ -99,10 +99,12 @@ function checkAnswers(event){
         }
     }
     else{
-    display(modal1);
-    
+        // display(modal1)
     return;
+    
+    
 }
+    
  displayInputPage(points);
 };
 
@@ -194,4 +196,7 @@ function display(element) {
    
 // }
 // redoButton.addEventListener("click", restart);
+$("#redo-btn").click(function(){
+    document.location.reload(true);
+  });
 
