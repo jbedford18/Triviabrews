@@ -16,12 +16,10 @@ var timerDiv = document.getElementById("time");
 var startTimer;
 // var closeModal = document.getElementById("close-button");
 var highScoresBtn = document.getElementById("highscores-btn");
-var choices = [];
 var questions = [];
 var correctChoices = [];
 var points;
 var savedScores = JSON.parse(localStorage.getItem("high scores")) || [];
-
 
 //function to get trivia category 
 function fetchQuestion() {
@@ -48,44 +46,75 @@ function displayCategories(category) {
 
 //function to display trivia question page...similar to how the highscore page funciton will work
 function loadTriviaQuestions(data) {
-    var triviaPage = document.getElementById("trivia-page");
+    //array of all possible choices used to randomize choice order
+    var choices = [];
+ 
    //use push methods to load trhese arrs
    //iterate thru all 10 questions and their possible choices
    for(var i = 0; i < data.results.length; i++){
-    correctChoices.push(data.results[i].correct_answer);
-    questions.push(data.results[i].correct_answer);
-    //new arr[] logic tesing:
-    //var test = []; 
-    
-    // for(var j = 0; j < 3; j++){
-    //     //test[i] = data.results[i].incorrect_answers[j];
-    //     //console.log(data.results[i].incorrect_answers[j]);
-    //     test.push(data.results[i].incorrect_answers[j]);
-    //     choices.push(data.results[i].incorrect_answers[j]);
-    //     console.log("i = "+i);
-    //     console.log("j = " + j);
-    // }
-    
-    var dataChoice1 = data.results[i].incorrect_answers[0];
-    var dataChoice2 = data.results[i].incorrect_answers[1];
-    var dataChoice3 = data.results[i].incorrect_answers[2];
-    var dataCorrectChoice = data.results[i].correct_answer;
-    //stringify needed to get the special chars in the html
-    var question = JSON.stringify(data.results[i].question);
-    var questionContainer = $("#question-container");
-    
-    questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
-    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ dataChoice1+'</label></input>');
-    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+dataChoice2+'</label></input>');
-    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+dataChoice3+'</label></input>');
-    //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
-    questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+dataCorrectChoice+'</label></input>');
-}
+   correctChoices.push(data.results[i].correct_answer);
+   questions.push(data.results[i].correct_answer);
 
-//for(var i = 0; i < 10; i++){
-  //      console.log(test[i]);
-//}
+   var dataChoice1 = data.results[i].incorrect_answers[0];
+   choices.push(dataChoice1);
+   var dataChoice2 = data.results[i].incorrect_answers[1];
+   choices.push(dataChoice2);
+   var dataChoice3 = data.results[i].incorrect_answers[2];
+   choices.push(dataChoice3);
+   var dataCorrectChoice = data.results[i].correct_answer;
+   choices.push(dataCorrectChoice);
+   //stringify needed to get the special chars in the html
+   var question = JSON.stringify(data.results[i].question);
+   var questionContainer = $("#question-container");
+   shuffle(choices);
+   questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
+    for(var j= 0 ; j < 4; j++){
+        questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[j]+'</label></input>');
+    }
+
+
+
+    //questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
+    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[i]+'</label></input>');
+    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+choices[i+1]+'</label></input>');
+    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+choices[i+2]+'</label></input>');
+    //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
+    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+choices[i+3]+'</label></input>');
+    
+
+    //console.log(choices);
+    
+    choices = [];
+    //console.log(choices);
+ 
+   
+    //load possible choices into an arry and randomly iterate through it to decide its possition relative to other choices above^
+    //reinitialize that arr to = [] for the next question and rescramble
+    //problem: each iteration of question and 4 choices must be a different randomization
+    //possible solution: incrment a third variabe after empting out the utliity arr[] to change the randomization function next iteration
+
+    //console.log(choices);
+  
+
+} 
 };
+
+var test = [0, 1, 2, 3];
+//console.log(test);
+//shuffle(test);
+//console.log(test);
+function shuffle(arr){
+    var index = arr.length, randIndex;
+    while(index !== 0){
+        randIndex = Math.floor(Math.random()* index);
+        index --;
+        [arr[index], arr[randIndex]] = [arr[randIndex], arr[index]];
+    }
+    return arr;
+};
+
+
+
 
 //function to check answers
 function checkAnswers(event) {
@@ -116,23 +145,25 @@ function checkAnswers(event) {
     displayInputPage(points);
 };
 
+//function to stop timer
+function stopTimer(){
+    clearInterval(timerEl);
+};
+
+//function to display usernma einput page after submiting quiz
 function displayInputPage() {
     hide(highScoresPage);
     hide(triviaPage);
     display(initialInputPage);
     finalScoreEl.textContent = "Final Score " + points;
-    storeScores();
-    
-}
+    storeScores();  
+};
 
 //function to display all scores
-
 function showScores() {
     hide(triviaPage);
     hide(initialInputPage);
     display(highScoresPage);
-
-
     for (var i = 0; i < savedScores.length; i++) {
         var scoreItem = document.createElement("div");
         console.log(scoreItem);
@@ -155,17 +186,6 @@ function storeScores() {
         showScores();
         console.log(userScore);
     }
-    
-
-};
-
-submitTriviaBtn.addEventListener("click", checkAnswers);
-initialSubmitBtn.addEventListener("click", displayInputPage);
-highScoresBtn.addEventListener("click", toHighScores);
-
-
-function stopTimer() {
-    clearInterval(startTimer);
 };
 
 //function to initialize the game on start button click
@@ -184,13 +204,6 @@ function startGame() {
     display(triviaPage);
 };
 
-// function shuffle(arr){
-//     var index = arr.length, temp, randIndex;
-//     while(0 !== index)
-// };
-
-startButton.addEventListener("click", startGame);
-
 //hides element
 function hide(element) {
     element.style.display = "none";
@@ -200,7 +213,7 @@ function hide(element) {
 function display(element) {
     element.style.display = "block";
 };
-
+//funciton to take user form start page to highscore page
 function toHighScores() {
     hide(startPage);
     display(highScoresPage);
@@ -209,15 +222,10 @@ function toHighScores() {
 
 };
 
-
-
-// conner working on logic you can place where you like 
-// var highScoresBtn = document.getElementById("highscores-btn")
-// highScores.addEventListener("click", highScores)
-// function highScores ()
-
-// var redoButton = document.getElementById("redo-btn")
-//reset local variables
+submitTriviaBtn.addEventListener("click", checkAnswers);
+initialSubmitBtn.addEventListener("click", displayInputPage);
+highScoresBtn.addEventListener("click", toHighScores);
+startButton.addEventListener("click", startGame);
 
 $("#redo-btn").click(function () {
     document.location.reload(true);
@@ -228,5 +236,5 @@ $("#redo-btn").click(function () {
 });
 
 $(".close-button").click(function () {
-    hide(modal1)
-})
+    hide(modal1);
+});
