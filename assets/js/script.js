@@ -65,12 +65,23 @@ function loadTriviaQuestions(data) {
    choices.push(dataChoice3);
    var dataCorrectChoice = data.results[i].correct_answer;
    choices.push(dataCorrectChoice);
+   if(!dataChoice1){
+       console.log("undefined");
+    dataChoice1 ="";
+    }
+    if(!dataChoice2){
+        dataChoice2 = "";
+    }
+    if(!dataChoice3){
+        dataChoice3 = "";
+    }
    //stringify needed to get the special chars in the html
    var question = JSON.stringify(data.results[i].question);
    var questionContainer = $("#question-container");
    shuffle(choices);
    questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
     for(var j= 0 ; j < 4; j++){
+     
         questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[j]+'</label></input>');
     }
     choices = [];
@@ -95,9 +106,9 @@ function shuffle(arr){
 //function to check answers
 function checkAnswers(event){
     points = 0;
-    stopTimer();
+    //stopTimer();
     event.preventDefault();
-    timerDiv.style.display = "none"
+    //timerDiv.style.display = "none"
     var userInput = document.querySelectorAll("input[type=radio]:checked");
     //console.log(userInput.length);
     if (userInput.length === 10) {
@@ -167,15 +178,15 @@ function storeScores() {
 
 //function to initialize the game on start button click
 function startGame() {
-    var count = 60;
-    //nested function to start timer
-     startTimer = setInterval(function () {
-        count--;
-        timerEl.textContent = count;
-        if (count <= 0) {
-            clearInterval(startTimer);
-        }
-    }, 1000);
+    // var count = 60;
+    // //nested function to start timer
+    //  startTimer = setInterval(function () {
+    //     count--;
+    //     timerEl.textContent = count;
+    //     if (count <= 0) {
+    //         clearInterval(startTimer);
+    //     }
+    // }, 1000);
     fetchQuestion();
     hide(startPage);
     display(triviaPage);
