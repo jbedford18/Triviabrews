@@ -3,7 +3,6 @@ var startPage = document.getElementById("start-page");
 var triviaPage = document.getElementById("trivia-page");
 var submitTriviaBtn = document.getElementById("submit-button");
 var highScoresPage = document.getElementById("high-scores-page");
-var timerEl = document.getElementById("timer");
 var finalScoreEl = document.getElementById("finalScore");
 var savedHighScores = document.getElementById("savedHighScores");
 var finalTime = document.getElementById("finalTime");
@@ -12,10 +11,7 @@ var initialsInputEl = document.getElementById("initials-input");
 var initialSubmitBtn = document.getElementById("initialsSubmit");
 var scoresContainer = document.getElementById("highscores");
 var modal1 = document.getElementById("Modal1");
-var timerDiv = document.getElementById("time");
-var breweriesList =  document.getElementById("breweries");
-var startTimer;
-// var closeModal = document.getElementById("close-button");
+//var breweriesList =  document.getElementById("breweries");
 var highScoresBtn = document.getElementById("highscores-btn");
 var questions = [];
 var correctChoices = [];
@@ -170,15 +166,6 @@ function storeScores() {
 
 //function to initialize the game on start button click
 function startGame() {
-    // var count = 60;
-    // //nested function to start timer
-    //  startTimer = setInterval(function () {
-    //     count--;
-    //     timerEl.textContent = count;
-    //     if (count <= 0) {
-    //         clearInterval(startTimer);
-    //     }
-    // }, 1000);
     fetchQuestion();
     hide(startPage);
     display(triviaPage);
@@ -222,16 +209,22 @@ function fetchBrewery(breweryInput) {
 
 //function to display brewery query results
 function displayBreweries(data){
-    var ul = document.getElementById("breweries");
     for(var i = 0; i < data.length; i++){
         var breweryName = data[i].name;
-    
+        appendLi(breweryName);
         //var li = document.createElement("li");
         //li.appendChild(breweryName);
         //ul.appendChild(li);
         //console.log(breweryName);
-       breweriesList.append(breweryName);
+       //breweriesList.append(breweryName);
     }
+};
+//function to append brewery name to list
+function appendLi(breweryName){
+    var ul = document.getElementById("breweries");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(breweryName));
+    ul.appendChild(li);
 };
 
 submitTriviaBtn.addEventListener("click", checkAnswers);
