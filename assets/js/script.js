@@ -65,23 +65,15 @@ function loadTriviaQuestions(data) {
    choices.push(dataChoice3);
    var dataCorrectChoice = data.results[i].correct_answer;
    choices.push(dataCorrectChoice);
-   if(!dataChoice1){
-       console.log("undefined");
-    dataChoice1 ="";
-    }
-    if(!dataChoice2){
-        dataChoice2 = "";
-    }
-    if(!dataChoice3){
-        dataChoice3 = "";
-    }
    //stringify needed to get the special chars in the html
    var question = JSON.stringify(data.results[i].question);
    var questionContainer = $("#question-container");
    shuffle(choices);
    questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
     for(var j= 0 ; j < 4; j++){
-     
+        if(!choices[j]){
+            choices[j] = "";
+        }
         questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[j]+'</label></input>');
     }
     choices = [];
