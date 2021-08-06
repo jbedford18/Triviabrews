@@ -1,3 +1,5 @@
+
+
 #Instruction-container {
     background-image: linear-gradient(to right, rgb(154, 154, 218), orange);
 }
@@ -25,7 +27,7 @@
 }
 
 .image-bgc{
-    margin: inherit;
+  margin: inherit;
   padding: 50px;
   background-image: url("../images/hero-bg.jpeg"); 
   display: flex;
@@ -65,8 +67,8 @@ footer {
 
 .column, .columns {
     border:black 2px solid;
-    background-color: none;
-    margin:10px;
+    /* background-color: none; */
+    /* margin:10px; */
 }
 
 #submit-button {
@@ -140,7 +142,7 @@ footer {
         padding: 20px;
         color: orange;
         width: 40%;
-        margin: 3.5%;
+        /* margin: 3.5%; */
         border-radius: 15px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       
