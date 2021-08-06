@@ -13,7 +13,7 @@ var initialSubmitBtn = document.getElementById("initialsSubmit");
 var scoresContainer = document.getElementById("highscores");
 var modal1 = document.getElementById("Modal1");
 var timerDiv = document.getElementById("time");
-var cocktailContainer = document.getElementById("displayCocktail");
+var breweriesList =  document.getElementById("breweries");
 var startTimer;
 // var closeModal = document.getElementById("close-button");
 var highScoresBtn = document.getElementById("highscores-btn");
@@ -37,24 +37,6 @@ function fetchQuestion() {
         }
     });
 };
-
-function fetchCocktail(){
-    fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-key": "b31df66c6dmsh9ed8352ddde0012p169e3cjsndeeea29f01ff",
-            "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com"
-        }
-    })
-    .then(response => {
-        console.log(response);
-        cocktailContainer.innerHTML = "<p>" + response + "</p>"
-    })
-    .catch(err => {
-        console.error(err);
-    });    
-};
-fetchCocktail();
 
 //REFACTOR HERE: when MVP is 100% add this function to display categories on main page
 function displayCategories(category) {
@@ -124,11 +106,11 @@ function checkAnswers(event){
             //console.log(correctChoices[i]);
             if (userInput[i].nextSibling.textContent == correctChoices[i]) {
                 points++;
-                console.log("correct");
+                //console.log("correct");
             }
             else if (userInput[i].nextSibling.textContent != correctChoices[i]) {
                 console.log(correctChoices[i]);
-                console.log("wrong!");
+                //console.log("wrong!");
             }
         }
     }
@@ -179,7 +161,7 @@ function storeScores() {
         savedScores.push(userScore);
         localStorage.setItem("high scores", JSON.stringify(savedScores));
         showScores();
-        console.log(userScore);
+        //console.log(userScore);
     }
 };
 
@@ -217,8 +199,47 @@ function toHighScores() {
 
 };
 
+//function to get random cocktail
+function fetchBrewery(breweryInput) {
+    var apiUrl = "https://api.openbrewerydb.org/breweries/search?query=" + breweryInput;
+    console.log(breweryInput);
+    fetch(apiUrl).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+                displayBreweries(data);
+            });
+        }
+        else {
+            alert("Error" + response.statusText);
+        }
+    });
+    storeScores();
+};
+
+//function to display brewery query results
+function displayBreweries(data){
+    var ul = document.getElementById("breweries");
+    for(var i = 0; i < data.length; i++){
+        var breweryName = data[i].name;
+    
+        //var li = document.createElement("li");
+        //li.appendChild(breweryName);
+        //ul.appendChild(li);
+        //console.log(breweryName);
+       breweriesList.append(breweryName);
+    }
+};
+
 submitTriviaBtn.addEventListener("click", checkAnswers);
-initialSubmitBtn.addEventListener("click", displayInputPage);
+
+initialSubmitBtn.addEventListener("click", function(){
+    var breweryInput = document.getElementById("breweryInput");
+    breweryInput = breweryInput.value.trim();
+    //breweryInput = breweryInput.toUpperCase();
+    console.log(breweryInput);
+    fetchBrewery(breweryInput);
+});
 highScoresBtn.addEventListener("click", toHighScores);
 startButton.addEventListener("click", startGame);
 
