@@ -90,7 +90,7 @@ footer {
         justify-content: space-between;
         width: 110px;
         height: 60px;
-        background: rgb(202, 134, 57);
+        /* background: rgb(202, 134, 57); */
         border: 1px dotted rgb(139, 57, 160);
         border-radius: 6px;
         padding: 10px 8px;
