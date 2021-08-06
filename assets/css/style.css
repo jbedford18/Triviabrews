@@ -1,3 +1,11 @@
+$foundation-palette: (
+  primary: ,
+  secondary: #767676,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
+
 #Instruction-container {
     background-image: linear-gradient(to right, rgb(154, 154, 218), orange);
 }
@@ -25,7 +33,7 @@
 }
 
 .image-bgc{
-    margin: inherit;
+  margin: inherit;
   padding: 50px;
   background-image: url("../images/hero-bg.jpeg"); 
   display: flex;
@@ -34,7 +42,6 @@
   align-items: flex-start;
   background-attachment: fixed;
   background-position: 80%;
-
 }
 
 body {
@@ -191,8 +198,7 @@ footer {
 #finalScore {
     color: orange;
     font-size: 25px;
-    text-shadow: 0 0 10px rgba(19, 31, 136, 0.5)
-
+    text-shadow: 0 0 10px rgba(19, 31, 136, 0.5);
 }
 
 #finalScore:hover{

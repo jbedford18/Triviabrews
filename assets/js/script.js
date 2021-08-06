@@ -13,6 +13,7 @@ var initialSubmitBtn = document.getElementById("initialsSubmit");
 var scoresContainer = document.getElementById("highscores");
 var modal1 = document.getElementById("Modal1");
 var timerDiv = document.getElementById("time");
+var cocktailContainer = document.getElementById("displayCocktail");
 var startTimer;
 // var closeModal = document.getElementById("close-button");
 var highScoresBtn = document.getElementById("highscores-btn");
@@ -37,12 +38,31 @@ function fetchQuestion() {
     });
 };
 
+function fetchCocktail(){
+    fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "b31df66c6dmsh9ed8352ddde0012p169e3cjsndeeea29f01ff",
+            "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com"
+        }
+    })
+    .then(response => {
+        console.log(response);
+        cocktailContainer.innerHTML = "<p>" + response + "</p>"
+    })
+    .catch(err => {
+        console.error(err);
+    });    
+};
+fetchCocktail();
+
 //REFACTOR HERE: when MVP is 100% add this function to display categories on main page
 function displayCategories(category) {
     var categoryEl = document.getElementById("categories");
     //document.createElement("btn").setAttribute("id = cat-btn");
     categoryEl.textContent = category;
 };
+
 
 //function to display trivia question page...similar to how the highscore page funciton will work
 function loadTriviaQuestions(data) {
@@ -71,35 +91,12 @@ function loadTriviaQuestions(data) {
     for(var j= 0 ; j < 4; j++){
         questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[j]+'</label></input>');
     }
-
-
-
-    //questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[i]+'</label></input>');
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+choices[i+1]+'</label></input>');
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+choices[i+2]+'</label></input>');
-    //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+choices[i+3]+'</label></input>');
-    
-
-    //console.log(choices);
-    
     choices = [];
     //console.log(choices);
- 
-   
-    //load possible choices into an arry and randomly iterate through it to decide its possition relative to other choices above^
-    //reinitialize that arr to = [] for the next question and rescramble
-    //problem: each iteration of question and 4 choices must be a different randomization
-    //possible solution: incrment a third variabe after empting out the utliity arr[] to change the randomization function next iteration
-
-    //console.log(choices);
-  
-
 } 
 };
 
-var test = [0, 1, 2, 3];
+//var test = [0, 1, 2, 3];
 //console.log(test);
 //shuffle(test);
 //console.log(test);
@@ -113,11 +110,8 @@ function shuffle(arr){
     return arr;
 };
 
-
-
-
 //function to check answers
-function checkAnswers(event) {
+function checkAnswers(event){
     points = 0;
     stopTimer();
     event.preventDefault();
@@ -128,11 +122,12 @@ function checkAnswers(event) {
         for (var i = 0; i < 10; i++) {
             //console.log(userInput[i].nextSibling);
             //console.log(correctChoices[i]);
-            if (userInput[i].nextSibling.textContent === correctChoices[i]) {
+            if (userInput[i].nextSibling.textContent == correctChoices[i]) {
                 points++;
                 console.log("correct");
             }
-            else if (userInput[i].nextSibling.textContent !== correctChoices[i]) {
+            else if (userInput[i].nextSibling.textContent != correctChoices[i]) {
+                console.log(correctChoices[i]);
                 console.log("wrong!");
             }
         }
@@ -166,7 +161,7 @@ function showScores() {
     display(highScoresPage);
     for (var i = 0; i < savedScores.length; i++) {
         var scoreItem = document.createElement("div");
-        console.log(scoreItem);
+        //console.log(scoreItem);
         scoreItem.textContent = savedScores[i].initials + ": " + savedScores[i].userScore + " points";
         scoresContainer.append(scoreItem);
     }
