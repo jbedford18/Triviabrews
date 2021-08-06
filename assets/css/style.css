@@ -56,14 +56,9 @@ footer {
     border:black 2px solid;
 }
 
-#submit-button {
-    float: right;
-}
-
 #question-container {
     text-shadow: 0 0 10px rgba(23, 30, 134, 0.5);
     color: orange;
-
     }
 
     #time {
