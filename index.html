@@ -34,7 +34,7 @@
     <section id="start-page" style="display: block;">
         <div class="grid-x">
             <div class="card grid-x column margin-2" id="Instruction-container">
-                <div id="bgc-1" class="card-divider align-self-middle cell medium-3">
+                <div id="bgc-1" class="card-divider align-self-middle cell medium-2 margin-1">
                     <h3 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="grid-x grid-padding-x text-center">Instructions</h3>
                 </div>
                 <div class="card-section cell-small-6 text-center ">
@@ -90,8 +90,8 @@
     <!--HIGHSCORE INPUT PAGE END-->
     <!--QUERIED BREWERIES & HIGHSCORES PAGE START-->
     <section class="margin-3" id="high-scores-page" style="display: none;">
-       <div class="highscore">
-        <h3>The Highest of Scores!</h3>
+       <div class="highscore float-center">
+        <h3 class="">The Highest of Scores!</h3>
         <div class="total-score" id = "highscores"> 
             <p id ="savedHighScores">High Scores: </p>
         </div>
@@ -101,12 +101,14 @@
         </div>
             
         </div> 
-        <div>
-            <h3>Breweries near you!</h3>
-            <ul id = breweries>
-                
-            </ul> 
-            <p>(Remember to bring )</p>
+        <div class="breweriesB" id="breweriesBG">
+            <h3 class="padding-1 margin-1">Breweries near you!</h3>
+            <h4 class="padding-1 margin-2">Locations :</p>
+            <div>
+            <ul id = "breweries" ></ul>
+            </ul>
+            </div> 
+           
         </div>
         <button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" id="redo-btn" class="alert button float-center button large" href="#">Restart</button>
         </section>
