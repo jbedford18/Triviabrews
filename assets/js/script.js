@@ -245,3 +245,4 @@ $("#redo-btn").click(function () {
 $(".close-button").click(function () {
     hide(modal1);
 });
+
