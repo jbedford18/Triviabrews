@@ -12,7 +12,7 @@ A website that offers the user 10 randomly generated trivia questions ranging fr
 * Foundation CSS framework
 
 ## Website
- - url - 
+ https://cluce059.github.io/Project1/
 ## ScreenShot
  ![alt text](assets/images/SStriv.PNG)
 ## Contribution
