@@ -212,11 +212,6 @@ function displayBreweries(data){
     for(var i = 0; i < data.length; i++){
         var breweryName = data[i].name;
         appendLi(breweryName);
-        //var li = document.createElement("li");
-        //li.appendChild(breweryName);
-        //ul.appendChild(li);
-        //console.log(breweryName);
-       //breweriesList.append(breweryName);
     }
 };
 //function to append brewery name to list
