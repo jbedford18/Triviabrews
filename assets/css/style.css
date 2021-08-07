@@ -27,6 +27,23 @@
   background-attachment: fixed;
   background-position: 20%;
 }
+ #start-btn{
+    border-radius: 10%;
+    border: solid black;
+ }
+
+ #highscores-btn{
+    border-radius: 10%;
+    border: solid black;
+ }
+ #initialsSubmit{
+    border-radius: 10%;
+    border: solid black;
+ }
+ #redo-btn{
+    border-radius: 10%;
+    border: solid black;
+ }
 
 body {
     background-color: rgb(192, 157, 207);
