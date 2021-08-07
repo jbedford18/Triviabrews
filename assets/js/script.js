@@ -70,7 +70,7 @@ function loadTriviaQuestions(data) {
         if(!choices[j]){
             choices[j] = "";
         }
-        questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[j]+'</label></input>');
+        questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice">'+ choices[j]+'</label></input>');
     }
     choices = [];
     //console.log(choices);
@@ -113,11 +113,11 @@ function checkAnswers(event){
             }
         }
     }
-    else if (userInput.length < 10) {
-        display(modal1);
-        //submitTriviaBtn.attributes.add('data-reveal = "Modal1"');
-        return;
-    }
+    // else if (userInput.length < 10) {
+    //     display(modal1);
+    //     //submitTriviaBtn.attributes.add('data-reveal = "Modal1"');
+    //     return;
+    // }
     displayInputPage(points);
 };
 

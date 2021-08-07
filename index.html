@@ -15,7 +15,7 @@
 <body>
 <header>
     <div class="grid-x grid-padding-x align-center">
-        <h1>Trivia Brews</h1>
+        <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;">Trivia Brews</h1>
     </div>
 </header>
 
@@ -23,9 +23,9 @@
 
 </section>
 
-    <div class="reveal label alert" id="Modal1" >
-        <h1>Please</h1>
-        <p class="lead">Answer all questions before submitting! </p>
+    <div class="reveal label alert " id="Modal1" >
+        <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" > Please</h1>
+        <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="lead">Answer all questions before submitting! </p>
         <button id = "close-button" class="close-button" data-close aria-label="Close reveal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -35,43 +35,46 @@
         <div class="grid-x">
             <div class="card grid-x column margin-2" id="Instruction-container">
                 <div id="bgc-1" class="card-divider align-self-middle cell medium-3">
-                    <h3>Instructions</h3>
+                    <h3 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="grid-x grid-padding-x text-center">Instructions</h3>
                 </div>
-                <div class="card-section cell-small-6 ">
+                <div class="card-section cell-small-6 text-center ">
                     <ul class="instructions no-bullet">
-                        <li><span>Step 1:</span> You must be of legal drinking age to play! Click the "Start Game" button to begin!</li>
-                        <li><span>Step 2:</span> You must answer every question before submitting your trivia quiz!</li>
-                        <li><span>Step 3:</span> Once you've completed your trivia quiz, save your score and search for a brewery in your city!</li>
-                        <li><span>Step 4:</span> Get to a local brewery ASAP to share your trivia knowledge and test it against others using our game!</li>
+                        <li style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><span>Step 1:</span> You must be of legal drinking age to play! Click the "Start Game" button to begin!</li>
+                        <li style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><span>Step 2:</span> You must answer every question before submitting your trivia quiz!</li>
+                        <li style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><span>Step 3:</span> Once you've completed your trivia quiz, save your score and search for a brewery in your city!</li>
+                        <li style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><span>Step 4:</span> Get to a local brewery ASAP to share your trivia knowledge and test it against others using our game!</li>
+                        <li style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><span>Step 5:</span> Choose the Start Game button in order to start!</li>
+                        <li style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><span>Step 6:</span> Select the High Scores button to view your previous scores!</li>
                     </ul>
             </div>
+            
         </div>
-        <div class="card grid-x column margin-2" id="bgc">
-            <div id="bgc-2" class="card-divider align-self-middle cell medium-4">
-                <h3>Gameplay!</h3>
+        
+    </div>
+    <div class="margin-2 padding-2">
+        <div class="grid-x grid-padding-x">
+            <div class="cell small-7">
+                <button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="alert button float-center button large" id="start-btn"> Start Game </button>
             </div>
-            <div class="card-section cell small-9">
-                <p>Select Start Game in order to play!</p>
-                <p>Choose the View Highscores below to see High Scores!</p>
-            </div>
-            <div class="cell small-4">
-                <button class="success button float-center button large" id="start-btn"> Start Game </button>
-            </div>
-        </div>
-        <div class="grid-x grid-padding-x align-right ">
-            <div class="cell small-4">
-                <button class="success button float-center button large" id="highscores-btn"> View Highscores </button>
+            <div class="grid-x grid-padding-x">
+                <div class="cell small-6">
+                    <button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="alert button float-center button large" id="highscores-btn"> View Highscores </button>
+                </div>
             </div>
         </div>
+    </div>
+        
+            
+        
     </section>
     <!--START PAGE END-->
     <!--TRIVIA PAGE START-->
     <section id="trivia-page" style="display: none;">
-        <div id="question-container">
+        <div id="question-container" class="padding-2">
             <!--append question here-->
             <h1 id="question"></h1>
         </div>
-        <p><button class="success button float-center button large" id="submit-button" type="submit">Submit Now!</button></p>
+        <p><button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="alert button float-center button large" id="submit-button" type="submit">Submit Now!</button></p>
     </section>
     <!--TRIVIA PAGE END-->
     <!--HIGHSCORE INPUT PAGE START-->
@@ -80,19 +83,10 @@
         <div id="finalTime" class="col text-right" style="display: none;">Time's Up!</div>
         <p><span id = "finalScore"></span></p>
         <p>Enter Initials: <input type = "text" id = "initials-input"></p>
-        <button class = "float-center" type = "button" id = "initialsSubmit">Submit </button>
-        <div class="wrapper">
-            <div class="input-group searchbar">
-                <div class="input-group-button">
-                  <button class="button search"><svg width="100" height="100" viewBox="0 0 100 100">
-                <path fill="#FFF" fill-rule="evenodd" d="M42.117,12.246 C50.1209,12.246 57.797,15.4257 63.453,21.0858 C69.1132,26.742 72.2928,34.4178 72.2928,42.4218 C72.2928,50.4258 69.1131,58.1018 63.453,63.7578 C57.7968,69.418 50.121,72.5976 42.117,72.5976 C34.1131,72.5976 26.437,69.4179 20.781,63.7578 C15.1208,58.1016 11.9412,50.4258 11.9412,42.4218 C11.9412,34.4178 15.1209,26.7418 20.781,21.0858 C26.4372,15.4256 34.113,12.246 42.117,12.246 L42.117,12.246 Z M76.0828827,67.3362833 C82.3527829,58.7859894 85.2617455,48.0434678 83.9173,37.22271 C82.0618,22.28871 72.3743,9.47671 58.5153,3.61771 L58.51139,3.61771 C53.32389,1.41851 47.74139,0.28961 42.10539,0.29741 L42.117,0.305 C29.058,0.30891 16.742,6.3675 8.769001,16.707 C0.7924008,27.047 -1.933999,40.5 1.382301,53.129 C4.698701,65.758 13.6833,76.137 25.7103,81.223 L25.7103,81.22691 C39.5733,87.08631 55.5113,85.10191 67.5153,76.02771 C67.5852345,75.9748392 67.6549736,75.9217748 67.724517,75.8685177 L91.555,99.6990032 L100.0003,91.253703 L76.0828827,67.3362833 Z"/>
-              </svg>
-              </button>
-                </div>
-                <input class="input-field search-field" id = "breweryInput" type="search" placeholder="Search breweries by city..." />
-              </div>
+        <p>Search By City: <input type = "text" id = "breweryInput"></p>
+        <button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class = "float-center" type = "button" id = "initialsSubmit">Submit </button>
     </div>
-    </div>
+    
     <!--HIGHSCORE INPUT PAGE END-->
     <!--QUERIED BREWERIES & HIGHSCORES PAGE START-->
     <section class="margin-3" id="high-scores-page" style="display: none;">
@@ -105,15 +99,19 @@
         <div class="?">
             <p id = "finalTime"></p>
         </div>
-            <button id="redo-btn" class="hollow button warning" href="#">Later Nerds</button>
+            
         </div> 
+        <div>
+            <h3>Breweries near you!</h3>
+            <ul id = breweries>
+                
+            </ul> 
+            <p>(Remember to bring )</p>
+        </div>
+        <button style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" id="redo-btn" class="alert button float-center button large" href="#">Restart</button>
         </section>
                <!--list of queried breweries-->
-               <div>
-                <ul id = breweries>
-                    
-                </ul> 
-            </div>
+               
         <!--QUERIED BREWERIES & HIGHSCORES PAGE END-->
     <footer class="grid-x grid-padding-x align-right">
         <p>MADE BY Caroline Luce, Conner Cochrane, and Justin Bedford</p>
