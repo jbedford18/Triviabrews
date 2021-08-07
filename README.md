@@ -1,11 +1,21 @@
-USER STORY:
+# TriviaBrews Trivia Game
 
-As a user of the SUPERCOOL TRIVIA GAME, 
-I WANT to be presented by a start page.
-The start page will have TRIVIA CATERGORY options,
-WHEN I select a category option, I am redirected to the
-QUIZ PAGE where I can answer QUIZ QUESTIONS based on the 
-CHOSEN CATEGORY.
-After completing the QUIZ QUESTIONS, I am presented with my
-SCORE. I have the option to SAVE my SCORE to be 
-displayed with other USER HIGHSCORES.
+## Purpose
+A website that offers the user 10 randomly generated trivia questions ranging from easy to hard difficulty. The user must answer each question in order to submit their high score under their chosen username. After the user creates a username, they can search for a brewery near them to go out for a drink and share their trvia knowledge! The saved highscores and local breweries are displayed after the user selects a username to saved their score under. The user can return to the start page from the high score page and play again.   
+
+## Built With
+* HTML
+* CSS
+* Javascript
+* OpenTrivia API
+* OpenBrewey DB API
+* Foundation CSS framework
+
+## Website
+ - url - 
+## ScreenShot
+ ![alt text](assets/images/SStriv.PNG)
+## Contribution
+Made with ❤️ by Caroline Luce, Conner Cochrane, & Justin Bedford
+
+### ©️2021 SuperCoolGames
