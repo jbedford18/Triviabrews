@@ -3,7 +3,6 @@ var startPage = document.getElementById("start-page");
 var triviaPage = document.getElementById("trivia-page");
 var submitTriviaBtn = document.getElementById("submit-button");
 var highScoresPage = document.getElementById("high-scores-page");
-var timerEl = document.getElementById("timer");
 var finalScoreEl = document.getElementById("finalScore");
 var savedHighScores = document.getElementById("savedHighScores");
 var finalTime = document.getElementById("finalTime");
@@ -12,9 +11,7 @@ var initialsInputEl = document.getElementById("initials-input");
 var initialSubmitBtn = document.getElementById("initialsSubmit");
 var scoresContainer = document.getElementById("highscores");
 var modal1 = document.getElementById("Modal1");
-var timerDiv = document.getElementById("time");
-var startTimer;
-// var closeModal = document.getElementById("close-button");
+//var breweriesList =  document.getElementById("breweries");
 var highScoresBtn = document.getElementById("highscores-btn");
 var questions = [];
 var correctChoices = [];
@@ -44,6 +41,7 @@ function displayCategories(category) {
     categoryEl.textContent = category;
 };
 
+
 //function to display trivia question page...similar to how the highscore page funciton will work
 function loadTriviaQuestions(data) {
     //array of all possible choices used to randomize choice order
@@ -69,37 +67,17 @@ function loadTriviaQuestions(data) {
    shuffle(choices);
    questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
     for(var j= 0 ; j < 4; j++){
+        if(!choices[j]){
+            choices[j] = "";
+        }
         questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[j]+'</label></input>');
     }
-
-
-
-    //questionContainer.append('<h2 id = "question">'+(i+1)+")."+question+'</h2>');
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice1">'+ choices[i]+'</label></input>');
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice2">'+choices[i+1]+'</label></input>');
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice3">'+choices[i+2]+'</label></input>');
-    //REFACTOR HERE: FOR TESTING ONLY: CHOICE 4 WILL ALWAYS BE THE CORRECT OPTION
-    //questionContainer.append('<input name = "answer'+i+'" type = "radio"><label id = "choice4">'+choices[i+3]+'</label></input>');
-    
-
-    //console.log(choices);
-    
     choices = [];
     //console.log(choices);
- 
-   
-    //load possible choices into an arry and randomly iterate through it to decide its possition relative to other choices above^
-    //reinitialize that arr to = [] for the next question and rescramble
-    //problem: each iteration of question and 4 choices must be a different randomization
-    //possible solution: incrment a third variabe after empting out the utliity arr[] to change the randomization function next iteration
-
-    //console.log(choices);
-  
-
 } 
 };
 
-var test = [0, 1, 2, 3];
+//var test = [0, 1, 2, 3];
 //console.log(test);
 //shuffle(test);
 //console.log(test);
@@ -113,27 +91,25 @@ function shuffle(arr){
     return arr;
 };
 
-
-
-
 //function to check answers
-function checkAnswers(event) {
+function checkAnswers(event){
     points = 0;
-    stopTimer();
+    //stopTimer();
     event.preventDefault();
-    timerDiv.style.display = "none"
+    //timerDiv.style.display = "none"
     var userInput = document.querySelectorAll("input[type=radio]:checked");
     //console.log(userInput.length);
     if (userInput.length === 10) {
         for (var i = 0; i < 10; i++) {
             //console.log(userInput[i].nextSibling);
             //console.log(correctChoices[i]);
-            if (userInput[i].nextSibling.textContent === correctChoices[i]) {
+            if (userInput[i].nextSibling.textContent == correctChoices[i]) {
                 points++;
-                console.log("correct");
+                //console.log("correct");
             }
-            else if (userInput[i].nextSibling.textContent !== correctChoices[i]) {
-                console.log("wrong!");
+            else if (userInput[i].nextSibling.textContent != correctChoices[i]) {
+                console.log(correctChoices[i]);
+                //console.log("wrong!");
             }
         }
     }
@@ -166,7 +142,7 @@ function showScores() {
     display(highScoresPage);
     for (var i = 0; i < savedScores.length; i++) {
         var scoreItem = document.createElement("div");
-        console.log(scoreItem);
+        //console.log(scoreItem);
         scoreItem.textContent = savedScores[i].initials + ": " + savedScores[i].userScore + " points";
         scoresContainer.append(scoreItem);
     }
@@ -184,21 +160,12 @@ function storeScores() {
         savedScores.push(userScore);
         localStorage.setItem("high scores", JSON.stringify(savedScores));
         showScores();
-        console.log(userScore);
+        //console.log(userScore);
     }
 };
 
 //function to initialize the game on start button click
 function startGame() {
-    var count = 60;
-    //nested function to start timer
-     startTimer = setInterval(function () {
-        count--;
-        timerEl.textContent = count;
-        if (count <= 0) {
-            clearInterval(startTimer);
-        }
-    }, 1000);
     fetchQuestion();
     hide(startPage);
     display(triviaPage);
@@ -222,8 +189,53 @@ function toHighScores() {
 
 };
 
+//function to get random cocktail
+function fetchBrewery(breweryInput) {
+    var apiUrl = "https://api.openbrewerydb.org/breweries/search?query=" + breweryInput;
+    console.log(breweryInput);
+    fetch(apiUrl).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+                displayBreweries(data);
+            });
+        }
+        else {
+            alert("Error" + response.statusText);
+        }
+    });
+    storeScores();
+};
+
+//function to display brewery query results
+function displayBreweries(data){
+    for(var i = 0; i < data.length; i++){
+        var breweryName = data[i].name;
+        appendLi(breweryName);
+        //var li = document.createElement("li");
+        //li.appendChild(breweryName);
+        //ul.appendChild(li);
+        //console.log(breweryName);
+       //breweriesList.append(breweryName);
+    }
+};
+//function to append brewery name to list
+function appendLi(breweryName){
+    var ul = document.getElementById("breweries");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(breweryName));
+    ul.appendChild(li);
+};
+
 submitTriviaBtn.addEventListener("click", checkAnswers);
-initialSubmitBtn.addEventListener("click", displayInputPage);
+
+initialSubmitBtn.addEventListener("click", function(){
+    var breweryInput = document.getElementById("breweryInput");
+    breweryInput = breweryInput.value.trim();
+    //breweryInput = breweryInput.toUpperCase();
+    console.log(breweryInput);
+    fetchBrewery(breweryInput);
+});
 highScoresBtn.addEventListener("click", toHighScores);
 startButton.addEventListener("click", startGame);
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,24 +15,13 @@
 <body>
 <header>
     <div class="grid-x grid-padding-x align-center">
-        <h1>Trivia Game</h1>
+        <h1>Trivia Brews</h1>
     </div>
 </header>
 
-<section class="image-bgc">
+<section class="image-bgc padding-50">
 
 </section>
-<section class="time-box grid-x grid-padding-x align-center">
-
-    <span class="label primary">
-    <div id="time">
-        <div>Timer :  <span id = "timer">00</span></div>
-        <div id="seconds"></div>
-    </div>
-</span>
-</section>
-
-
 
     <div class="reveal label alert" id="Modal1" >
         <h1>Please</h1>
@@ -42,7 +30,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
+<!--START PAGE-->
     <section id="start-page" style="display: block;">
         <div class="grid-x">
             <div class="card grid-x column margin-2" id="Instruction-container">
@@ -51,70 +39,62 @@
                 </div>
                 <div class="card-section cell-small-6 ">
                     <ul class="instructions no-bullet">
-                        <li><span>Rule 1:</span> Click the "Start Game" button to play!</li>
-                        <li><span>Rule 2:</span> You will have a total of 60 seconds to answer all the questions!</li>
-                        <li><span>Rule 3:</span> You must answer every question before submitting the final answer!</li>
-                        <li><span>Rule 4:</span> You can only select one answer per question!</li>
-                        <li><span>Rule 5:</span> You must click the circle when selecting an answer!</li>
+                        <li><span>Step 1:</span> You mus be of legal drinking age to play! Click the "Start Game" button to begin!</li>
+                        <li><span>Step 2:</span> You must answer every question before submitting your trivia quiz!</li>
+                        <li><span>Step 3:</span> Once you've completed your trivia quiz, save your score and search for a brewery in your city</li>
+                        <li><span>Step 4:</span> Get to a local brewery ASAP to share your trivia knowledge and test it against others using our game!</li>
                     </ul>
-                    <div id="categories"></div>
-                </div>
             </div>
-
-            <div class="card grid-x column margin-2" id="bgc">
-                <div id="bgc-2" class="card-divider align-self-middle cell medium-4">
-                    <h3>Gameplay!</h3>
-                </div>
-                <div class="card-section cell small-9">
-                    <p>Select Start Game in order to play!</p>
-                    <p>Choose the View Highscores below to see High Scores!</p>
-                </div>
-
-                <!-- <ul class="dropdown menu" data-dropdown-menu>
-                    <li class="is-dropdown-submenu-parent">
-                        <a href="#"> Category Options </a>
-                        <ul class="menu" id="categories">
-                            <li><a href="#option"></a></li>
-                            <li><a href="#option"></a></li>
-                            <li><a href="#option"></a></li>
-                            <li><a href="#option"></a></li>
-                            <li><a href="#option"></a></li>
-                        </ul>
-                    </li>
-                </ul> -->
-                <div class="cell small-4">
-                    <button class="button alert" id="start-btn"> Start Game </button>
-                </div>
+        </div>
+        <div class="card grid-x column margin-2" id="bgc">
+            <div id="bgc-2" class="card-divider align-self-middle cell medium-4">
+                <h3>Gameplay!</h3>
+            </div>
+            <div class="card-section cell small-9">
+                <p>Select Start Game in order to play!</p>
+                <p>Choose the View Highscores below to see High Scores!</p>
+            </div>
+            <div class="cell small-4">
+                <button class="button alert rounded float-center" id="start-btn"> Start Game </button>
             </div>
         </div>
         <div class="grid-x grid-padding-x align-right ">
             <div class="cell small-4">
-                <button class="button alert" id="highscores-btn"> View Highscores </button>
+                <button class="button alert float-center button large" id="highscores-btn"> View Highscores </button>
             </div>
         </div>
     </section>
-    <!--Caroline's edits for trivia question page START-->
-    <!--note: make all the edits that are needed so long as the id names stay the same I can figure out the changes easy :)-->
+    <!--START PAGE END-->
+    <!--TRIVIA PAGE START-->
     <section id="trivia-page" style="display: none;">
         <div id="question-container">
             <!--append question here-->
             <h1 id="question"></h1>
         </div>
-       
-       
-        
-        <p><button  class="success button" id="submit-button" type="submit">Submit Now!</button></p>
+        <p><button class="success button float-center button large" id="submit-button" type="submit">Submit Now!</button></p>
     </section>
-<!--caroline adding in this user input page to save high score-->
-    <!--taking input for user scores-->
+    <!--TRIVIA PAGE END-->
+    <!--HIGHSCORE INPUT PAGE START-->
     <div id = "initial-input-page" style="display: none;">
         <h1>Complete!</h1>
         <div id="finalTime" class="col text-right" style="display: none;">Time's Up!</div>
         <p><span id = "finalScore"></span></p>
         <p>Enter Initials: <input type = "text" id = "initials-input"></p>
-        <button type = "button" id = "initialsSubmit">Submit </button>
+        <button class = "float-center" type = "button" id = "initialsSubmit">Submit </button>
+        <div class="wrapper">
+            <div class="input-group searchbar">
+                <div class="input-group-button">
+                  <button class="button search"><svg width="100" height="100" viewBox="0 0 100 100">
+                <path fill="#FFF" fill-rule="evenodd" d="M42.117,12.246 C50.1209,12.246 57.797,15.4257 63.453,21.0858 C69.1132,26.742 72.2928,34.4178 72.2928,42.4218 C72.2928,50.4258 69.1131,58.1018 63.453,63.7578 C57.7968,69.418 50.121,72.5976 42.117,72.5976 C34.1131,72.5976 26.437,69.4179 20.781,63.7578 C15.1208,58.1016 11.9412,50.4258 11.9412,42.4218 C11.9412,34.4178 15.1209,26.7418 20.781,21.0858 C26.4372,15.4256 34.113,12.246 42.117,12.246 L42.117,12.246 Z M76.0828827,67.3362833 C82.3527829,58.7859894 85.2617455,48.0434678 83.9173,37.22271 C82.0618,22.28871 72.3743,9.47671 58.5153,3.61771 L58.51139,3.61771 C53.32389,1.41851 47.74139,0.28961 42.10539,0.29741 L42.117,0.305 C29.058,0.30891 16.742,6.3675 8.769001,16.707 C0.7924008,27.047 -1.933999,40.5 1.382301,53.129 C4.698701,65.758 13.6833,76.137 25.7103,81.223 L25.7103,81.22691 C39.5733,87.08631 55.5113,85.10191 67.5153,76.02771 C67.5852345,75.9748392 67.6549736,75.9217748 67.724517,75.8685177 L91.555,99.6990032 L100.0003,91.253703 L76.0828827,67.3362833 Z"/>
+              </svg>
+              </button>
+                </div>
+                <input class="input-field search-field" id = "breweryInput" type="search" placeholder="Search key phrase to find the best brewery for you..." />
+              </div>
     </div>
-    <!--highscore page-->
+    </div>
+    <!--HIGHSCORE INPUT PAGE END-->
+    <!--QUERIED BREWERIES & HIGHSCORES PAGE START-->
     <section class="margin-3" id="high-scores-page" style="display: none;">
        <div class="highscore">
         <h3>The Highest of Scores!</h3>
@@ -128,9 +108,15 @@
             <button id="redo-btn" class="hollow button warning" href="#">Later Nerds</button>
         </div> 
         </section>
-            <!--Caroline edits for trivia page END-->
+               <!--list of queried breweries-->
+               <div>
+                <ul id = breweries>
+                    
+                </ul> 
+            </div>
+        <!--QUERIED BREWERIES & HIGHSCORES PAGE END-->
     <footer class="grid-x grid-padding-x align-right">
-        <p>Made with swag by (group)</p>
+        <p>MADE BY Caroline Luce, Conner Cochrane, and Justin Bedford</p>
     </footer>
     <script src="https://kit.fontawesome.com/bd874f56b1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
