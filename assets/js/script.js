@@ -113,11 +113,11 @@ function checkAnswers(event){
             }
         }
     }
-    // else if (userInput.length < 10) {
-    //     display(modal1);
-    //     //submitTriviaBtn.attributes.add('data-reveal = "Modal1"');
-    //     return;
-    // }
+    else if (userInput.length < 10) {
+        display(modal1);
+        //submitTriviaBtn.attributes.add('data-reveal = "Modal1"');
+        return;
+    }
     displayInputPage(points);
 };
 
