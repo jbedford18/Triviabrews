@@ -14,7 +14,7 @@ A website that offers the user 10 randomly generated trivia questions ranging fr
 ## Website
  - url - 
 ## ScreenShot
- - scnreenshot - 
+ ![alt text](assets/images/SStriv.PNG)
 ## Contribution
 Made with ❤️ by Caroline Luce, Conner Cochrane, & Justin Bedford
 
