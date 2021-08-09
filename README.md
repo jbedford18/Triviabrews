@@ -12,7 +12,7 @@ A website that offers the user 10 randomly generated trivia questions ranging fr
 * Foundation CSS framework
 
 ## Website
- https://cluce059.github.io/Project1/
+  https://jbedford18.github.io/Triviabrews/
 ## ScreenShot
  ![alt text](assets/images/SStriv.PNG)
 ## Contribution
